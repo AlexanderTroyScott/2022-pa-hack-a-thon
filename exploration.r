@@ -25,16 +25,17 @@ summarize_column <- function(field) {
     print(df)
     }
 
-binarize_column <- function(dataset,field) {
-    docs <- Corpus(VectorSource(field))
+binarize_column <- function(df, col) {
+    docs <- Corpus(VectorSource(df[[col]]))
     docs <- docs %>%
       #tm_map(removeNumbers) %>%
       tm_map(removePunctuation) %>%
       tm_map(stripWhitespace)
     dtm <- TermDocumentMatrix(docs)
     matrix <- t(as.matrix(dtm)) 
-    colnames(matrix) <- paste0(substitute(field),"_",colnames(matrix))
-    temp <- data.frame(temp,matrix) %>% select(-field)
+    colnames(matrix) <- paste0(col,"_",colnames(matrix))
+    df <- data.frame(df,matrix) %>% select(-all_of(col))
+    return(df)
     }
 
 temp <- train
@@ -43,3 +44,5 @@ temp <- temp %>% mutate_if(sapply(temp, is.character), as.factor)
 summarize_column(temp$Cooling)
 summarize_column(temp$Laundry.features)
 summarize_column(temp$Appliances.included)
+
+temp <- binarize_column(df=temp, col="Cooling")
