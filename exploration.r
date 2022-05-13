@@ -25,6 +25,18 @@ summarize_column <- function(field) {
     print(df)
     }
 
+binarize_column <- function(dataset,field) {
+    docs <- Corpus(VectorSource(field))
+    docs <- docs %>%
+      #tm_map(removeNumbers) %>%
+      tm_map(removePunctuation) %>%
+      tm_map(stripWhitespace)
+    dtm <- TermDocumentMatrix(docs)
+    matrix <- t(as.matrix(dtm)) 
+    colnames(matrix) <- paste0(substitute(field),"_",colnames(matrix))
+    temp <- data.frame(temp,matrix) %>% select(-field)
+    }
+
 temp <- train
 temp <- temp %>% mutate_if(sapply(temp, is.character), as.factor)
 
