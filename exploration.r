@@ -7,6 +7,8 @@ library(RColorBrewer)
 install.packages("wordcloud2")
 library(wordcloud2)
 install.packages("tm")
+install.packages("janitor")
+library(janitor)
 library(tm)
 
 set.seed(1234)
@@ -46,3 +48,29 @@ summarize_column(temp$Laundry.features)
 summarize_column(temp$Appliances.included)
 
 temp <- binarize_column(df=temp, col="Cooling")
+temp <- binarize_column(df=temp, col="Type")
+temp <- binarize_column(df=temp, col="Heating")
+temp <- binarize_column(df=temp, col="Parking")
+temp <- binarize_column(df=temp, col="Region")
+temp <- binarize_column(df=temp, col="Elementary.School")
+temp <- binarize_column(df=temp, col="Middle.School")
+temp <- binarize_column(df=temp, col="High.School")
+temp <- binarize_column(df=temp, col="Flooring")
+temp <- binarize_column(df=temp, col="Heating.features")
+temp <- binarize_column(df=temp, col="Appliances.included")
+temp <- binarize_column(df=temp, col="Laundry.features")
+temp <- binarize_column(df=temp, col="Parking.features")
+temp <- binarize_column(df=temp, col="City")
+
+temp <- temp %>% select(-Summary)
+temp <- temp %>% clean_names()
+
+
+model.rf <- randomForest(formula = sold_price ~ ., 
+                         data = temp,
+                         ntree = 50,
+                         mtry = 3, # The number of features to use at each split.
+                         sampsize = floor(0.6 * nrow(temp)), # The number of observations to use in each tree.
+                         nodesize = 100, # The minimum number of observations in each leaf node of a tree - this controls complexity.
+                         importance = TRUE
+                         )
