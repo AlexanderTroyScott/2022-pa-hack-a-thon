@@ -70,6 +70,7 @@ ready_data <- function(df) {
         select(-bedrooms) %>% mutate(bedrooms=temp) %>% select(-temp)
     }
 
+
 #TRAINING
 temp <- adv_train %>% clean_names() %>%  mutate(log.sold = log(sold_price),  log.list = log(listed_price), log.dif = log.sold-log.list, dol.dif = sold_price-listed_price) %>% filter(log.dif != Inf)
 temp <- temp %>% select(-tax_assessed_value,-annual_tax_amount,-listed_on,-last_sold_on)
@@ -90,6 +91,7 @@ temp <- temp %>% mutate_if(sapply(temp, is.character), as.factor)
 temp <- ready_data(df=temp)
 temp <- temp %>% select(-sold_price,-summary, -id, -n, -last_sold_price, -log.sold, -log.list, -dol.dif, -log.mean, -log.dev, -log.median, -dol.mean, -dol.dev, -dol.median, -dif.mean, -dif.dev, -dif.median)
 xgb_train <- xgb.DMatrix(data.matrix(temp[,colnames(temp)%ni%"log.dif"]),label=as.numeric(temp$log.dif))
+
 
 #TESTING DATA
 temp <- adv_test %>% clean_names() %>% select(-sold_price,-summary, -id, -last_sold_price)
