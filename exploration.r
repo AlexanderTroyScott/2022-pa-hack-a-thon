@@ -122,8 +122,7 @@ results <- predict(bst,xgb_test)
 scalar = 1.05
 listed <- adv_test %>% clean_names() %>% mutate(log.listed = log(listed_price)) 
 adj_results <- data.frame(results,listed)
-adj_results %>% select(id, log.listed) %>% mutate("Sold Price" = exp(log.listed+results)*scalar) %>% select(id,"Sold Price") %>% write.csv(adj_results,"Test Results.csv",row.names=FALSE)
-
+adj_results %>% select(id, log.listed, results) %>% mutate("Sold Price" = exp(log.listed+results)*scalar) %>% select(id,"Sold Price") %>% write.csv("Test Results.csv",row.names=FALSE)
 #Columns
 c('id','sold_price','summary','type','year_built','heating','cooling','parking','lot','bedrooms','bathrooms','full_bathrooms',
   'total_interior_livable_area','total_spaces','garage_spaces','region','elementary_school','elementary_school_score',
