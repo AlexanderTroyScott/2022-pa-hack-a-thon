@@ -89,18 +89,32 @@ stat <- temp %>% summarise(n=n(),
 temp <- data.frame(temp,stat) 
 temp <- temp %>% mutate_if(sapply(temp, is.character), as.factor) 
 temp <- ready_data(df=temp)
-temp <- temp %>% select(-sold_price,-summary, -id, -n, -last_sold_price, -log.sold, -log.list, -dol.dif, -log.mean, -log.dev, -log.median, -dol.mean, -dol.dev, -dol.median, -dif.mean, -dif.dev, -dif.median)
+temp <- temp %>% select(-sold_price,-listed_price,-summary, -id, -n, -last_sold_price, -log.sold, -log.list, -dol.dif, -log.mean, -log.dev, -log.median, -dol.mean, -dol.dev, -dol.median, -dif.mean, -dif.dev, -dif.median)
 xgb_train <- xgb.DMatrix(data.matrix(temp[,colnames(temp)%ni%"log.dif"]),label=as.numeric(temp$log.dif))
-
-
-#TESTING DATA
-temp <- adv_test %>% clean_names() %>% select(-sold_price,-summary, -id, -last_sold_price)
-
+train_copy <- temp
 
 #MODEL
-parameters <- list("objective"="reg:linear","eval_metric"="rmse")
-bst <- xgboost(data = training, label = results, max.depth = 4,
-               eta = 1, nthread = 14, nrounds = 10,objective = "reg:squarederror")
+parameters <- list("eval_metric"="rmse")
+bst <- xgboost(data = xgb_train, max.depth = 20,
+               eta = 0.1, nthread = 14, print_every_n = 10,
+               nfold = 5, nrounds = 10,objective = "reg:squarederror",params=parameters)
+
+#TESTING DATA
+training_order <- train_copy %>% select(-log.dif) %>% colnames()
+temp <- adv_test %>% clean_names() #%>% select(-summary, -id, -last_sold_price,-tax_assessed_value,-annual_tax_amount,-listed_on,-last_sold_on,-listed_price)
+temp <- ready_data(df=temp)
+
+features <- bst$feature_names
+missing_features <- features[features %ni% colnames(temp)]
+temp <- temp[colnames(temp) %in% features]
+missing_columns <- setdiff(bst$feature_names,colnames(temp))
+temp[c(missing_columns)] <- 0
+temp <- temp %>% select(all_of(training_order))
+xgb_test <- xgb.DMatrix(data.matrix(temp))
+results <- predict(bst,xgb_test)
+
+listed <- adv_test %>% select(log.listed = log(listed_price))
+adj_results <- data.frame(results,listed)
 
 #Columns
 c('id','sold_price','summary','type','year_built','heating','cooling','parking','lot','bedrooms','bathrooms','full_bathrooms',
@@ -108,6 +122,10 @@ c('id','sold_price','summary','type','year_built','heating','cooling','parking',
   'elementary_school_distance','middle_school','middle_school_score','middle_school_distance','high_school','high_school_score',
   'high_school_distance','flooring','heating_features','cooling_features','appliances_included','laundry_features','parking_features',
   'tax_assessed_value','annual_tax_amount','listed_on','listed_price','last_sold_on','last_sold_price','city','zip','state')
+#debug
+setdiff(colnames(xgb_test),bst$feature_names)
+print("other direction")
+setdiff(bst$feature_names,colnames(xgb_test))
 
 model.rf <- randomForest(formula = sold_price ~ ., 
                          data = temp,
@@ -118,20 +136,6 @@ model.rf <- randomForest(formula = sold_price ~ .,
                          importance = TRUE
                          )
 
-
-#XGBoost
-temp <- adv_train %>% clean_names() %>% mutate(log.sold = log(sold_price), log.list = log(listed_price), log.dif = log.sold-log.list, dol.dif = sold_price-listed_price)
-stat <- temp %>% summarise(n=n(),
-                           log.mean = mean(log.sold),
-                           log.dev = sd(log.sold), 
-                           log.median=median(log.sold), 
-                           dol.mean = mean(sold_price), 
-                           dol.dev = sd(sold_price),
-                           dol.median = median(sold_price),
-                           dif.mean = mean(dol.dif), 
-                           dif.dev = sd(dol.dif),
-                           dif.median = median(dol.dif)
-                          )
 
 params <- list(booster = "gbtree", objective = "reg:squarederror", eta = 0.3, gamma=0, max_depth=5, min_child_weight=1, subsample=1, colsample_bytree=1)
 xgbcv <- xgb.cv( params = params, data = dtrain, nrounds = 100, nfold = 5, showsd = T, stratified = T, print_every_n = 10, early_stop_round = 20, maximize = F)
