@@ -1,3 +1,4 @@
+#FILES AND LIBRARIES
 adv_train <- read.csv("advanced_train.csv")
 adv_test <- read.csv("advanced_test.csv")
 library(dplyr)
@@ -9,13 +10,14 @@ library(randomForest)
 library(janitor)
 library(xgboost)
 set.seed(1234)
-
 '%ni%'<-Negate('%in%')
 install.packages("Matrix")
 library(Matrix)
 install.packages("data.table")
 library(data.table)
+library(stringr)
 
+#FUNCTIONS
 summarize_column <- function(field) {
     docs <- Corpus(VectorSource(field))
     docs <- docs %>%
@@ -43,6 +45,32 @@ binarize_column <- function(df, col) {
     return(df)
     }
 
+ready_data <- function(df) {
+    df <- binarize_column(df=df, col="cooling")
+    df <- binarize_column(df=df, col="type")
+    df <- binarize_column(df=df, col="heating")
+    df <- binarize_column(df=df, col="parking")
+    df <- binarize_column(df=df, col="region")
+    df <- binarize_column(df=df, col="cooling_features")
+    df <- binarize_column(df=df, col="elementary_school")
+    df <- binarize_column(df=df, col="middle_school")
+    df <- binarize_column(df=df, col="high_school")
+    df <- binarize_column(df=df, col="flooring")
+    df <- binarize_column(df=df, col="heating_features")
+    df <- binarize_column(df=df, col="appliances_included")
+    df <- binarize_column(df=df, col="laundry_features")
+    df <- binarize_column(df=df, col="parking_features")
+    df <- binarize_column(df=df, col="city")
+    df <- df %>% mutate(state_AZ = case_when(state == "AZ" ~ 1, state != "AZ" ~ 0)) %>% select(-state)
+    
+    df <- df %>% mutate(temp = abs(coalesce(as.numeric(as.character(bedrooms)),0)) + 
+                case_when(str_count(bedrooms,',') > 0 ~ as.numeric(str_count(bedrooms,','))+1,
+                          coalesce(as.numeric(as.character(bedrooms)),0) == 0 ~ 1,
+                          TRUE ~ 0)) %>% 
+        select(-bedrooms) %>% mutate(bedrooms=temp) %>% select(-temp)
+    }
+
+#TRAINING
 temp <- adv_train %>% clean_names() %>%  mutate(log.sold = log(sold_price),  log.list = log(listed_price), log.dif = log.sold-log.list, dol.dif = sold_price-listed_price) %>% filter(log.dif != Inf)
 temp <- temp %>% select(-tax_assessed_value,-annual_tax_amount,-listed_on,-last_sold_on)
 stat <- temp %>% summarise(n=n(),
@@ -57,34 +85,17 @@ stat <- temp %>% summarise(n=n(),
                            dif.median = median(dol.dif)
                           )
 
-temp <- binarize_column(df=temp, col="cooling")
-temp <- binarize_column(df=temp, col="type")
-temp <- binarize_column(df=temp, col="heating")
-temp <- binarize_column(df=temp, col="parking")
-temp <- binarize_column(df=temp, col="region")
-temp <- binarize_column(df=temp, col="cooling_features")
-temp <- binarize_column(df=temp, col="elementary_school")
-temp <- binarize_column(df=temp, col="middle_school")
-temp <- binarize_column(df=temp, col="high_school")
-temp <- binarize_column(df=temp, col="flooring")
-temp <- binarize_column(df=temp, col="heating_features")
-temp <- binarize_column(df=temp, col="appliances_included")
-temp <- binarize_column(df=temp, col="laundry_features")
-temp <- binarize_column(df=temp, col="parking_features")
-temp <- binarize_column(df=temp, col="city")
-temp <- temp %>% mutate(state_AZ = case_when(state == "AZ" ~ 1, state != "AZ" ~ 0)) %>% select(-state)
-
+temp <- data.frame(temp,stat) 
+temp <- temp %>% mutate_if(sapply(temp, is.character), as.factor) 
+temp <- ready_data(df=temp)
 temp <- temp %>% select(-sold_price,-summary, -id, -n, -last_sold_price, -log.sold, -log.list, -dol.dif, -log.mean, -log.dev, -log.median, -dol.mean, -dol.dev, -dol.median, -dif.mean, -dif.dev, -dif.median)
-
-library(stringr)
-temp <- temp %>% mutate(temp = abs(coalesce(as.numeric(as.character(bedrooms)),0)) + 
-                case_when(str_count(bedrooms,',') > 0 ~ as.numeric(str_count(bedrooms,','))+1,
-                          coalesce(as.numeric(as.character(bedrooms)),0) == 0 ~ 1,
-                          TRUE ~ 0)) %>% 
-        select(-bedrooms) %>% mutate(bedrooms=temp) %>% select(-temp)
-
 xgb_train <- xgb.DMatrix(data.matrix(temp[,colnames(temp)%ni%"log.dif"]),label=as.numeric(temp$log.dif))
 
+#TESTING DATA
+temp <- adv_test %>% clean_names() %>% select(-sold_price,-summary, -id, -last_sold_price)
+
+
+#MODEL
 parameters <- list("objective"="reg:linear","eval_metric"="rmse")
 bst <- xgboost(data = training, label = results, max.depth = 4,
                eta = 1, nthread = 14, nrounds = 10,objective = "reg:squarederror")
