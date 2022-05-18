@@ -95,18 +95,13 @@ train_copy <- temp
 
 #MODEL
 parameters <- list("eval_metric"="rmse")
-bst <- xgboost(data = xgb_train, max.depth = 20,
+bst <- xgboost(data = xgb_train, max.depth = 20,booster="gbtree",
                eta = .01, print_every_n = 50,
                nfold = 5, nrounds = 1500,objective = "reg:squarederror",params=parameters)
 
 #TESTING DATA
 training_order <- train_copy %>% select(-log.dif) %>% colnames()
 temp <- adv_test %>% clean_names() #%>% select(-summary, -id, -last_sold_price,-tax_assessed_value,-annual_tax_amount,-listed_on,-last_sold_on,-listed_price)
-temp[temp$id == 46735,"listed_price"] <- 350000
-temp[temp$id == 38600,"listed_price"] <- 2000000
-temp[temp$id == 41608,"listed_price"] <- 2000000
-temp[temp$id == 39704,"listed_price"] <- 600000
-temp[temp$id == 37646,"listed_price"] <- 150000
 
 temp <- ready_data(df=temp)
 
@@ -119,10 +114,19 @@ temp <- temp %>% select(all_of(training_order))
 
 xgb_test <- xgb.DMatrix(data.matrix(temp))
 results <- predict(bst,xgb_test)
-scalar = 1.05
-listed <- adv_test %>% clean_names() %>% mutate(log.listed = log(listed_price)) 
+scalar = 1.00
+listed <- adv_test %>% clean_names() 
+listed[listed$id == 46735,"listed_price"] <- 350000
+listed[listed$id == 38600,"listed_price"] <- 2000000
+listed[listed$id == 41608,"listed_price"] <- 2000000
+listed[listed$id == 39704,"listed_price"] <- 600000
+listed[listed$id == 37646,"listed_price"] <- 150000
+listed <- listed %>% mutate(log.listed = log(listed_price)) 
 adj_results <- data.frame(results,listed)
 adj_results %>% select(id, log.listed, results) %>% mutate("Sold Price" = exp(log.listed+results)*scalar) %>% select(id,"Sold Price") %>% write.csv("Test Results.csv",row.names=FALSE)
+
+
+
 #Columns
 c('id','sold_price','summary','type','year_built','heating','cooling','parking','lot','bedrooms','bathrooms','full_bathrooms',
   'total_interior_livable_area','total_spaces','garage_spaces','region','elementary_school','elementary_school_score',
