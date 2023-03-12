@@ -23,3 +23,15 @@ df_train = df_train[.!ismissing.(df_train.Sold_Price), :]
 
 #Create target variable, the difference between logs of sale price and listed price
 df_train.🎯 = log.(df_train.Sold_Price)-log.(df_train.Listed_Price)
+
+using TextAnalysis
+
+function clean_text(text)
+    text = coalesce(text,"")
+    text = StringDocument(text)
+    prepare!(text, strip_numbers| strip_non_letters| strip_frequent_terms)
+    #stem!(text)
+    return text
+end
+
+df_train.Heating2 = map(text,map(clean_text, df_train.Heating))
