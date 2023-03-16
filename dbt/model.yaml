@@ -1,0 +1,9 @@
+name: my_dbt_project
+version: '2.0.0'
+profile: hackathon
+
+models:
+  my_dbt_project:
+    my_first_model:
+      schema: public
+      materialized: view
