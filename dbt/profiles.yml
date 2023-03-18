@@ -4,15 +4,15 @@ config:
     #skip_profile_setup: true
 
 default:
-  target: public
+  target: actuaryllc
   outputs:
-    public:
+    actuaryllc:
       type: postgres
       host: 192.168.190.81
       user: username
       password: password
       port: 5432
       dbname: username
-      schema: public
+      schema: hackathons
       threads: 4
       sslmode: disable
