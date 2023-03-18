@@ -7,17 +7,17 @@ models:
         meta:
           dimension:
             type: number
-      - name: id
+      - name: Id
         description: ""
         meta:
           dimension:
             type: number
-      - name: summary
+      - name: Summary
         description: ""
         meta:
           dimension:
             type: string
-      - name: type
+      - name: Type
         description: ""
         meta:
           dimension:
