@@ -1,0 +1,7 @@
+version: 2
+models:
+  - name: advanced_test_2022
+    description: "A table of all page views on Lightdash webpages."
+    columns:
+      - name: id
+        description: "The source of the page view: the demo site, docs site, or lightdash.com"
