@@ -8,6 +8,3 @@ profile: actuaryllc
 models:
   advanced_test_2022:
     materialized: table
-
-source-paths:
-  - models
