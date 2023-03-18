@@ -1,2 +1,2 @@
 SELECT *
-FROM {{ ref('advanced_test_2022') }}
+FROM {{ ref('hackathons.advanced_test_2022') }}
