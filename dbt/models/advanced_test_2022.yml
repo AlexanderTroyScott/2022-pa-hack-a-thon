@@ -102,55 +102,55 @@ models:
         meta:
           dimension:
             type: string
-            sql: '"Elementary school"'
+            sql: '"Elementary School"'
       - name: elementary school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Elementary school score"'
+            sql: '"Elementary School Score"'
       - name: elementary school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Elementary school distance"'
+            sql: '"Elementary School Distance"'
       - name: middle school
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"Middle school"'
+            sql: '"Middle School"'
       - name: middle school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Middle school score"'
+            sql: '"Middle School Score"'
       - name: middle school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Middle school distance"'
+            sql: '"Middle School Distance"'
       - name: high school
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"High school"'
+            sql: '"High School"'
       - name: high school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"High school score"'
+            sql: '"High School Score"'
       - name: high school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"High school distance"'
+            sql: '"High School Distance"'
       - name: flooring
         description: ""
         meta:
@@ -204,25 +204,25 @@ models:
         meta:
           dimension:
             type: timestamp
-            sql: '"Listed on"'
+            sql: '"Listed On"'
       - name: listed price
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Listed price"'
+            sql: '"Listed Price"'
       - name: last sold on
         description: ""
         meta:
           dimension:
             type: timestamp
-            sql: '"Last sold on"'
+            sql: '"Last Sold On"'
       - name: last sold price
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"Last sold price"'
+            sql: '"Last Sold Price"'
       - name: city
         description: ""
         meta:
