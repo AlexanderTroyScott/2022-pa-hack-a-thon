@@ -1,0 +1,18 @@
+config:
+  debug: true
+  send_anonymous_usage_stats: false
+    #skip_profile_setup: true
+
+default:
+  target: public
+  outputs:
+    dev:
+      type: postgres
+      host: 192.168.190.81
+      user: username
+      password: password
+      port: 5432
+      dbname: username
+      schema: public
+      threads: 4
+      sslmode: disable
