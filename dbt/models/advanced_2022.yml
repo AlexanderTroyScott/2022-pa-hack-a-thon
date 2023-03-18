@@ -35,7 +35,7 @@ models:
         description: ""
         meta:
           dimension:
-            type: numeric
+            type: number
             sql: '"Year built"'
       - name: heating
         description: ""
