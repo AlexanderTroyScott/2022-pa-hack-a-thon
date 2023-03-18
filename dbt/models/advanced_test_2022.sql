@@ -1,2 +1,2 @@
-SELECT "Id" as "Id"
+SELECT *
    FROM advanced_test_2022
