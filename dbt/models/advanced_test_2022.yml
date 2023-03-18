@@ -30,214 +30,214 @@ models:
         meta:
           dimension:
             type: number
-            sql: '"year built"'
+            sql: '"Year built"'
       - name: heating
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"heating"'
+            sql: '"Heating"'
       - name: cooling
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"cooling"'
+            sql: '"Cooling"'
       - name: parking
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"parking"'
+            sql: '"Parking"'
       - name: lot
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"lot"'
+            sql: '"Lot"'
       - name: bedrooms
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"bedrooms"'
+            sql: '"Bedrooms"'
       - name: bathrooms
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"bathrooms"'
+            sql: '"Bathrooms"'
       - name: full bathrooms
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"full bathrooms"'
+            sql: '"Full bathrooms"'
       - name: total interior livable area
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"total interior livable area"'
+            sql: '"Total interior livable area"'
       - name: total spaces
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"total spaces"'
+            sql: '"Total spaces"'
       - name: garage spaces
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"garage spaces"'
+            sql: '"Garage spaces"'
       - name: region
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"region"'
+            sql: '"Region"'
       - name: elementary school
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"elementary school"'
+            sql: '"Elementary school"'
       - name: elementary school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"elementary school score"'
+            sql: '"Elementary school score"'
       - name: elementary school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"elementary school distance"'
+            sql: '"Elementary school distance"'
       - name: middle school
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"middle school"'
+            sql: '"Middle school"'
       - name: middle school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"middle school score"'
+            sql: '"Middle school score"'
       - name: middle school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"middle school distance"'
+            sql: '"Middle school distance"'
       - name: high school
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"high school"'
+            sql: '"High school"'
       - name: high school score
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"high school score"'
+            sql: '"High school score"'
       - name: high school distance
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"high school distance"'
+            sql: '"High school distance"'
       - name: flooring
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"flooring"'
+            sql: '"Flooring"'
       - name: heating features
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"heating features"'
+            sql: '"Heating features"'
       - name: cooling features
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"cooling features"'
+            sql: '"Cooling features"'
       - name: appliances included
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"appliances included"'
+            sql: '"Appliances included"'
       - name: laundry features
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"laundry features"'
+            sql: '"Laundry features"'
       - name: parking features
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"parking features"'
+            sql: '"Parking features"'
       - name: tax assessed value
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"tax assessed value"'
+            sql: '"Tax assessed value"'
       - name: annual tax amount
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"annual tax amount"'
+            sql: '"Annual tax amount"'
       - name: listed on
         description: ""
         meta:
           dimension:
             type: timestamp
-            sql: '"listed on"'
+            sql: '"Listed on"'
       - name: listed price
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"listed price"'
+            sql: '"Listed price"'
       - name: last sold on
         description: ""
         meta:
           dimension:
             type: timestamp
-            sql: '"last sold on"'
+            sql: '"Last sold on"'
       - name: last sold price
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"last sold price"'
+            sql: '"Last sold price"'
       - name: city
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"city"'
+            sql: '"City"'
       - name: zip
         description: ""
         meta:
           dimension:
             type: number
-            sql: '"zip"'
+            sql: '"Zip"'
       - name: state
         description: ""
         meta:
           dimension:
             type: string
-            sql: '"state"'
+            sql: '"State"'
