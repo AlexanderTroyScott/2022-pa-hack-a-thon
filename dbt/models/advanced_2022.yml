@@ -12,6 +12,7 @@ models:
         meta:
           dimension:
             type: string
+            sql: '"Target"'
       - name: Id
         description: ""
         meta:
