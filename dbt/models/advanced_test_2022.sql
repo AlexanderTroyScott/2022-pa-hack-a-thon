@@ -1,2 +1,2 @@
 SELECT *
-   FROM advanced_test_2022
+FROM {{ ref('advanced_test_2022') }}
