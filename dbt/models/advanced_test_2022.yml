@@ -12,7 +12,7 @@ models:
         meta:
           dimension:
             type: number
-            sql: "Id"
+            sql: '"Id"'
       - name: Summary
         description: ""
         meta:
