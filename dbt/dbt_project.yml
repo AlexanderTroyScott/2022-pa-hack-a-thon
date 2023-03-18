@@ -7,10 +7,7 @@ profile: default
 
 models:
   advanced_test_2022:
-    materialized: view
-    sql: |
-      SELECT *
-      FROM username.advanced_test_2022
+    materialized: table
 
 #source-paths:
 #  - models
