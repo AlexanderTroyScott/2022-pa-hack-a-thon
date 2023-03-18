@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: advanced_test_2022
+  - name: username.public.advanced_test_2022
     description: "A table of all page views on Lightdash webpages."
     columns:
       - name: Id
