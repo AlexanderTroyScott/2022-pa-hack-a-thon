@@ -1,4 +1,4 @@
 {{ config(materialized='view') }}
 
 SELECT *
-FROM public.advanced-train-2022
+FROM advanced_test_2022
