@@ -3,10 +3,10 @@ config:
   send_anonymous_usage_stats: false
     #skip_profile_setup: true
 
-default:
-  target: actuaryllc
+actuaryllc:
+  target: database
   outputs:
-    actuaryllc:
+    database:
       type: postgres
       host: 192.168.190.81
       user: username
