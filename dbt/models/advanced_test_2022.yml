@@ -7,11 +7,12 @@ models:
         meta:
           dimension:
             type: number
-      - name: "Id"
+      - name: Id
         description: ""
         meta:
           dimension:
             type: number
+            sql: "Id"
       - name: Summary
         description: ""
         meta:
