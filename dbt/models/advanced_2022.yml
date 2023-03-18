@@ -13,6 +13,12 @@ models:
           dimension:
             type: string
             sql: '"Id"'
+      - name: Sold Price
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Sold Price"'
       - name: Summary
         description: ""
         meta:
@@ -29,7 +35,7 @@ models:
         description: ""
         meta:
           dimension:
-            type: string
+            type: numeric
             sql: '"Year built"'
       - name: heating
         description: ""
