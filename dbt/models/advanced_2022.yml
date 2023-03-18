@@ -7,6 +7,11 @@ models:
         meta:
           dimension:
             type: string
+      - name: Target
+        description: "Whether or not the record was testing set or the training set."
+        meta:
+          dimension:
+            type: string
       - name: Id
         description: ""
         meta:
