@@ -5,5 +5,12 @@ config-version: 2
 
 profile: default
 
-source-paths:
-  - models
+models:
+  advanced_test_2022:
+    materialized: view
+    sql: |
+      SELECT *
+      FROM username.advanced_test_2022
+
+#source-paths:
+#  - models
