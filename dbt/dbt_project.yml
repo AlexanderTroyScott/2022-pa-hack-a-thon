@@ -5,9 +5,9 @@ config-version: 2
 
 profile: actuaryllc
 
-#models:
-#  advanced_test_2022:
-#    materialized: table
+models:
+  advanced_test_2022:
+    materialized: table
 
 source-paths:
   - models
