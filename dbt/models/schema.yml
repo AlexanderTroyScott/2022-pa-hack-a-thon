@@ -2,6 +2,7 @@ version: 2
 models:
   - name: advanced_test_2022
     description: "A table of all page views on Lightdash webpages."
+    schema: hackathon
     columns:
       - name: Id
       - name: "Summary"
