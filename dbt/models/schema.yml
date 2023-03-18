@@ -7,7 +7,7 @@ models:
         meta:
           dimension:
             type: number
-      - name: Id
+      - name: "Id"
         description: ""
         meta:
           dimension:
