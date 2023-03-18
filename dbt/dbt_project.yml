@@ -4,7 +4,3 @@ version: 1.0.0
 config-version: 2
 
 profile: actuaryllc
-
-models:
-  advanced_test_2022:
-    materialized: table
