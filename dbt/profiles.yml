@@ -6,7 +6,7 @@ config:
 default:
   target: public
   outputs:
-    dev:
+    public:
       type: postgres
       host: 192.168.190.81
       user: username
