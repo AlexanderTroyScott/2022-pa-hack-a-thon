@@ -1,6 +1,6 @@
 -- Define the model name and schema
 {{  config(
-    schema='public',
+    schema='my_schema',
     materialized='table',
     unique_key='id'
     )
@@ -12,7 +12,7 @@ SELECT
   name,
   age,
   gender
-INTO {{ ref('public.new_table') }}
+INTO {{ ref('my_schema.new_table') }}
 FROM (
   VALUES 
     (1, 'John', 25, 'Male'),
