@@ -1,0 +1,5 @@
+sources:
+  - name: raw_data
+    database: username  
+    tables:
+      - name: advanced_2022
