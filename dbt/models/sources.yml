@@ -5,3 +5,5 @@ sources:
     schema: public
     tables:
       - name: advanced_2022
+        freshness: # make this a little more strict
+          warn_after: {count: 6, period: hour}
