@@ -8,11 +8,8 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
 sources:
-  - name: actuaryllc:
-    database: username
-    schema: public
-    tables:
-      - name: advanced_2022
+  tables:
+    - name: advanced_2022
 models:
   actuaryllc:
     staging:
