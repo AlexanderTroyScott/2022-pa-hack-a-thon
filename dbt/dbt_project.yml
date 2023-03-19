@@ -1,19 +1,15 @@
 name: actuaryllc
 version: 1.0.0
-
 config-version: 2
-
 profile: actuaryllc
-
 sources:
   - name: raw_data
     database: username
     schema: public
     table: advanced_2022
-
 models:
   actuaryllc:
     schema: hackathons
     explore:
-      description: 'A description of the explore model'
+      description: A description of the explore model
       sql: models/explore_2022.sql
