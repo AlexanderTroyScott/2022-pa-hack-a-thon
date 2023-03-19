@@ -1,7 +1,8 @@
 -- stg_advanced_2022.sql
 {{
     config(
-        materialized='table'
+        materialized='table',
+        alias = 'AAAAA'
     )
 }}
 with
