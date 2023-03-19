@@ -1,11 +1,20 @@
-{{ config(
-    materialized='table',
-    schema='hackathons'
-) }}
+-- stg_advanced_2022.sql
 
-SELECT CAST('Year built' AS int)        as 'Year built'
-  ,case
-    when '"Sold Price"' is null then 'Yes'
-    else 'No'
-  end                                   as target
-FROM {{ source('raw_data', 'advanced_2022') }}
+with
+
+source as (
+
+    select * from {{ source('raw_data','advanced_2022') }}
+
+),
+
+renamed as (
+
+    select
+   *
+
+    from source
+
+)
+
+select * from renamed
