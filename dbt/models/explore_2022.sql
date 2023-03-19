@@ -9,5 +9,3 @@ SELECT CAST('Year built' AS int)        as 'Year built'
     else 'No'
   end                                   as target
 FROM from {{ source('raw_data', 'advanced_2022') }}
-
-{{ ref('explore_2022') }}
