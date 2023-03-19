@@ -3,6 +3,6 @@ version: 2
 sources:
   - name: raw_data
     database: username
-    schena: public
-    tables: 
+    schema: public
+    tables:
       - name: advanced_2022
