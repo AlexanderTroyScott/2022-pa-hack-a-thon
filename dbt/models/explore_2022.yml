@@ -1,15 +1,16 @@
 version: 2
 
-schema: public
-name: explore_2022
-columns:
-  - name: target
-    meta:
-      dimension:
-        type: string
-  - name: Year built
-  
+
 models:
+  - schema: public
+  - name: explore_2022
+    materialized: table
+    columns:
+      - name: target
+        meta:
+          dimension:
+          type: string
+      - name: Year built
   - name: explore_2022asd
     materialized: table
     columns:
