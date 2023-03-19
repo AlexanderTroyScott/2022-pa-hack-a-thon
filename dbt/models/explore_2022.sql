@@ -3,4 +3,4 @@ SELECT CAST('Year built' AS int)        as 'Year built'
     when '"Sold Price"' is null then 'Yes'
     else 'No'
   end                                   as target
-FROM advance_2022
+FROM advanced_2022
