@@ -9,8 +9,7 @@ sources:
   - name: raw_data
     database: username
     schema: public
-    table:
-      - name: advanced_2022
+    table: advanced_2022
 
 models:
   actuaryllc:
