@@ -11,7 +11,7 @@ sources:
 
 models:
   actuaryllc:
-    +schema: hackathons
+    schema: hackathons
     explore:
       description: 'A description of the explore model'
       sql: models/explore_2022.sql
