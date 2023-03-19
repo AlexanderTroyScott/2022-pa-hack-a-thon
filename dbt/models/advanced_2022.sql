@@ -3,4 +3,4 @@ SELECT CAST('Year built' AS int)        as 'Year built'
     when '"Sold Price"' is null then 'Yes'
     else 'No'
   end                                   as target
-FROM advanced_2022
+FROM {{ ref('advanced_2022') }}
