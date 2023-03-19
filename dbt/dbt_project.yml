@@ -9,7 +9,7 @@ sources:
     table: advanced_2022
 models:
   actuaryllc:
-    schema: hackathons
+    schema: public
     explore:
       description: A description of the explore model
       sql: models/explore_2022.sql
