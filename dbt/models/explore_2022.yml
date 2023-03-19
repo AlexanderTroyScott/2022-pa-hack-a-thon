@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: advanced_2022
+  - name: explore_2022
     columns:
       - name: _record_number
         description: ""
