@@ -6,9 +6,6 @@ sources:
   raw_data:
     +enabled: true
 models:
-  actuaryllc:
-    schema: public
-    explore:
-      description: A description of the explore model
-      +materialized: table
-      sql: models/explore_2022.sql
+  explore:
+    staging:
+      +materialized: view
