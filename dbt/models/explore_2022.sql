@@ -8,4 +8,4 @@ SELECT CAST('Year built' AS int)        as 'Year built'
     when '"Sold Price"' is null then 'Yes'
     else 'No'
   end                                   as target
-FROM from {{ source('raw_data', 'advanced_2022') }}
+FROM {{ source('raw_data', 'advanced_2022') }}
