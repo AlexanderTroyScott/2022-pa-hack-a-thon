@@ -6,6 +6,6 @@ sources:
   raw_data:
     +enabled: false
 models:
-  explore:
+  AAAAA:
     staging:
       +materialized: table
