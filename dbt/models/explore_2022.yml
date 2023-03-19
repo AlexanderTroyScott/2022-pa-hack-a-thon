@@ -1,6 +1,7 @@
 version: 2
 models:
   - name: explore_2022
+    materialized: table
     columns:
       - name: _record_number
         description: ""
