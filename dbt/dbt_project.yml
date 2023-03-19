@@ -8,4 +8,4 @@ sources:
 models:
   explore:
     staging:
-      +materialized: view
+      +materialized: table
