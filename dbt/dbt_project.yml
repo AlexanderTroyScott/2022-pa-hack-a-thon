@@ -2,11 +2,6 @@ name: actuaryllc
 version: 1.0.0
 config-version: 2
 profile: actuaryllc
-sources:
-  - name: raw_data
-    database: username
-    schema: public
-    table: advanced_2022
 models:
   actuaryllc:
     schema: public
