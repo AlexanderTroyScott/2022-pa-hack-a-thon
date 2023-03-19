@@ -6,7 +6,7 @@ config-version: 2
 profile: actuaryllc
 
 sources:
-  - raw_data
+  - name: raw_data
     database: username
     schema: public
     table: advanced_2022
