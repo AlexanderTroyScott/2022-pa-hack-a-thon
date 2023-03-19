@@ -10,4 +10,5 @@ models:
     schema: public
     explore:
       description: A description of the explore model
+      +materialized: table
       sql: models/explore_2022.sql
