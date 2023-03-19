@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: raw_data
-    database: username
-    schema: public
-    tables:
-      - name: advanced_2022
-        identifier: advanced_2022_raw
