@@ -4,3 +4,10 @@ version: 1.0.0
 config-version: 2
 
 profile: actuaryllc
+
+models:
+  actuaryllc:
+    +schema: hackathons
+    explore:
+      description: 'A description of the explore model'
+      sql: models/explore_2022.sql
