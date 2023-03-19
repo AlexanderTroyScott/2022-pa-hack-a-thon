@@ -5,6 +5,10 @@ config-version: 2
 
 profile: actuaryllc
 
+sources:
+  - name: raw_data
+    path: sources/sources.yml
+
 models:
   actuaryllc:
     +schema: hackathons
