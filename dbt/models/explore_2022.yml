@@ -1,6 +1,13 @@
 version: 2
+
+schema: public
+name: explore_2022
+columns:
+  - name: target
+  - name: Year built
+  
 models:
-  - name: explore_2022
+  - name: explore_2022asd
     materialized: table
     columns:
       - name: _record_number
