@@ -1,6 +1,0 @@
-sources:
-  - name: raw_data
-    database: username
-    schema: public
-    tables:
-      - name: advanced_2022
