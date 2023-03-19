@@ -3,7 +3,6 @@ version: 2
 
 models:
   - name: explore_2022
-    schema: public
     materialized: table
     columns:
       - name: target
