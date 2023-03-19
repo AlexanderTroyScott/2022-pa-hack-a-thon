@@ -2,10 +2,15 @@ name: actuaryllc
 version: 1.0.0
 config-version: 2
 profile: actuaryllc
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
 sources:
   raw_data:
     +enabled: true
 models:
-  AAAAA:
+  actuaryllc:
     staging:
       +materialized: table
