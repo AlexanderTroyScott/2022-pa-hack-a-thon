@@ -4,6 +4,9 @@ schema: public
 name: explore_2022
 columns:
   - name: target
+    meta:
+      dimension:
+        type: string
   - name: Year built
   
 models:
