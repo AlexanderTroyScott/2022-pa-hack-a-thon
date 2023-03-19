@@ -1,21 +1,12 @@
--- Define the model name and schema
-{{  config(
-    schema='my_schema',
+{{ config(
     materialized='table',
-    unique_key='id'
-    )
-}}
+    schema='my_schema'
+) }}
 
--- Define the SQL query to create the new table
-SELECT 
-  id,
-  name,
-  age,
-  gender
-INTO {{ ref('my_schema.new_table') }}
-FROM (
-  VALUES 
-    (1, 'John', 25, 'Male'),
-    (2, 'Jane', 30, 'Female'),
-    (3, 'Bob', 45, 'Male')
-) AS t(id, name, age, gender);
+CREATE TABLE {{ ref('my_schema.new_table') }} (
+  column1 VARCHAR(255),
+  column2 INTEGER
+);
+
+INSERT INTO {{ ref('my_schema.new_table') }} (column1, column2)
+VALUES ('value1', 1), ('value2', 2), ('value3', 3);
