@@ -13,6 +13,6 @@ actuaryllc:
       password: password
       port: 5432
       dbname: username
-      schema: public
+      schema: hackathons
       threads: 4
       sslmode: disable
