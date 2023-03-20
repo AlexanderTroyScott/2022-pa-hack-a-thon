@@ -2,7 +2,7 @@
 {{
     config(
         materialized='table',
-        alias = 'AAAAA'
+        alias = 'stg_2022_advanced_test'
     )
 }}
 with
