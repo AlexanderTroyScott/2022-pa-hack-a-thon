@@ -1,6 +1,0 @@
-seeds:
-  - name: 2022_hackathon
-    config:
-      enabled: true
-      database: username
-      schema: hackathons
