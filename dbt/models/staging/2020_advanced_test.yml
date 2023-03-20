@@ -1,0 +1,199 @@
+version: 2
+models:
+  - name: 2022_advanced_text
+    columns:
+      - name: "Id"
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: Summary
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: Type
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: year built
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: heating
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cooling
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: parking
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: lot
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: bedrooms
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: bathrooms
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: full bathrooms
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total interior livable area
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total spaces
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: garage spaces
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: region
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: elementary school
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: elementary school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: elementary school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: middle school
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: middle school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: middle school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: high school
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: high school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: high school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: flooring
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: heating features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cooling features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: appliances included
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: laundry features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: parking features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: tax assessed value
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: annual tax amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: listed on
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: listed price
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: last sold on
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: last sold price
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: city
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: zip
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: state
+        description: ""
+        meta:
+          dimension:
+            type: string
