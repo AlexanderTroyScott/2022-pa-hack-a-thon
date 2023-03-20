@@ -1,7 +1,10 @@
 version: 2
+
 sources:
   - name: raw_data
+    schema: public
+    database: username
     tables:
       - name: 2022_advanced_test
-        freshness: # make this a little more strict
-          warn_after: {count: 6, period: hour}
+      - name: 2022_advanced_train
+      - name: 2022_sample_submission
