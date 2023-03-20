@@ -7,4 +7,6 @@
 with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
-select * from source
+select *
+,log('Sold Price') as target 
+from source
