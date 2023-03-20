@@ -14,5 +14,4 @@ actuaryllc:
       port: 5432
       dbname: username
       schema: hackathons
-      threads: 4
       sslmode: disable
