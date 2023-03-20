@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: 2022_advanced_text
+  - name: stg_2022_advanced_test
     columns:
       - name: "Id"
         description: ""
