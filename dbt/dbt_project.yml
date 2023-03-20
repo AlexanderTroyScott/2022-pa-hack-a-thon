@@ -12,8 +12,5 @@ models:
     staging:
       +materialized: table
 seeds:
-  - name: 2022_hackathon
-    config:
-      enabled: true
-      database: username
-      schema: hackathons
+  database: username
+  schema: hackathons
