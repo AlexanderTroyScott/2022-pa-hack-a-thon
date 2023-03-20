@@ -4,4 +4,7 @@
         alias = 'int_2022_cleaned_data'
     )
 }}
-select * from {{ ref('stg_2022_advanced') }}
+with source as (
+    select * from {{ ref('stg_2022_advanced') }}
+    )
+select * from source
