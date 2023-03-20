@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias = '2022_advanced'
+        alias = 'stg_2022_advanced'
     )
 }}
 {{ dbt_utils.union_relations(
