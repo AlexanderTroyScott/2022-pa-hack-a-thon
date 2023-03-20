@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw_data
-    schema: public
+    schema: hackathons
     database: username
     tables:
       - name: 2022_advanced_test
