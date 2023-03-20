@@ -9,7 +9,9 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 sources:
   tables:
-    - name: advanced_2022
+    - name: 2022_advanced_test
+    - name: 2022_advanced_train
+    - name: 2022_sampled_submission
 models:
   actuaryllc:
     staging:
