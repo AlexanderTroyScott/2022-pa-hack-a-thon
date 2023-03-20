@@ -1,1 +1,1 @@
-select * from {{ ref('stg_stripe__payments') }}
+select * from {{ ref('stg_2022_advanced') }}
