@@ -9,7 +9,7 @@ with
 
 source as (
 
-    select * from {{ source('raw_data','2022_advanced_test') }}
+    select * from {{ source('actuaryllc','2022_advanced_test') }}
 
 ),
 
