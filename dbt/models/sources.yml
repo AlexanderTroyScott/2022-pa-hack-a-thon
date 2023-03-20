@@ -4,6 +4,6 @@ sources:
     database: username
     schema: public
     tables:
-      - name: advanced_2022
+      - name: 2022_advanced_test
         freshness: # make this a little more strict
           warn_after: {count: 6, period: hour}
