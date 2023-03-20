@@ -1,0 +1,244 @@
+version: 2
+models:
+  - name: int_2022_cleaned_data
+    columns:
+      - name: Id
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Id"'
+      - name: Sold price
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Sold Price"'
+      - name: Summary
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Summary"'
+      - name: Type
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Type"'
+      - name: year built
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Year built"'
+      - name: heating
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Heating"'
+      - name: cooling
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Cooling"'
+      - name: parking
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Parking"'
+      - name: lot
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Lot"'
+      - name: bedrooms
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Bedrooms"'
+      - name: bathrooms
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Bathrooms"'
+      - name: full bathrooms
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Full bathrooms"'
+      - name: total interior livable area
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Total interior livable area"'
+      - name: total spaces
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Total spaces"'
+      - name: garage spaces
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Garage spaces"'
+      - name: region
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Region"'
+      - name: elementary school
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Elementary School"'
+      - name: elementary school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Elementary School Score"'
+      - name: elementary school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Elementary School Distance"'
+      - name: middle school
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Middle School"'
+      - name: middle school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Middle School Score"'
+      - name: middle school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"middle school distance"'
+      - name: high school
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"High School"'
+      - name: high school score
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"High School Score"'
+      - name: high school distance
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"High School Distance"'
+      - name: flooring
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Flooring"'
+      - name: heating features
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Heating features"'
+      - name: cooling features
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Cooling features"'
+      - name: appliances included
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Appliances included"'
+      - name: laundry features
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Laundry features"'
+      - name: parking features
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"Parking features"'
+      - name: tax assessed value
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Tax assessed value"'
+      - name: annual tax amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Annual tax amount"'
+      - name: listed on
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+            sql: '"Listed On"'
+      - name: listed price
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Listed Price"'
+      - name: last sold on
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+            sql: '"Last Sold On"'
+      - name: last sold price
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Last Sold Price"'
+      - name: city
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"City"'
+      - name: zip
+        description: ""
+        meta:
+          dimension:
+            type: number
+            sql: '"Zip"'
+      - name: state
+        description: ""
+        meta:
+          dimension:
+            type: string
+            sql: '"State"'
