@@ -1,8 +1,6 @@
 version: 2
 sources:
   - name: raw_data
-    database: username
-    schema: public
     tables:
       - name: 2022_advanced_test
         freshness: # make this a little more strict
