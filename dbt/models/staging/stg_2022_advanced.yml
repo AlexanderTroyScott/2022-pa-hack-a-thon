@@ -221,7 +221,7 @@ models:
       - name: last sold price
         description: ""
         meta:
-          dimension:
+          metric:
             type: number
             sql: '"Last Sold Price"'
       - name: city
