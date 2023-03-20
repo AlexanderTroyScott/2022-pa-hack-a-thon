@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: stg_2022_advanced_train
+  - name: stg_2022_advanced
     columns:
       - name: Id
         description: ""
