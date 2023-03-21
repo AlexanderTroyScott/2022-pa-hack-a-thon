@@ -11,9 +11,9 @@ select CASE
     WHEN Sold_Price = 0 THEN 'Test'
     ELSE 'Train'
     END                         as source
-"Sold Price"-"Listed Price"     as target
-,"Id"                               as id
-,"Sold Price"                       as sold_price
+,"Sold Price"-"Listed Price"    as target
+,"Id"                           as id
+,"Sold Price"                   as sold_price
 ,"Summary"                      as summary
 ,"Type"                         as type
 ,"Year built"                   as year_built
