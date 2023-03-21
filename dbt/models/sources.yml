@@ -5,4 +5,6 @@ sources:
     schema: hackathons
     database: username
     tables:
-      - name: 2022_advanced
+      - name: 2022_advanced_train
+      - name: 2022_advanced_test
+      - name: 2022_sample_submission
