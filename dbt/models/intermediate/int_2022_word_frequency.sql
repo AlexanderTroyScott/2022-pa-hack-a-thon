@@ -1,6 +1,5 @@
-{% import "dbt_utils" as dbt_utils %}
 
-{{ dbt_utils.generate_alias('word_count', 'heating_feature') }}
+{{ config(alias='word_count_heating_feature') }}
 {{
     word_count(
         source=ref('int_2022_cleaned_data'),
