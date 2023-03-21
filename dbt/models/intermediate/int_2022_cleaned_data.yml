@@ -8,7 +8,7 @@ models:
           metrics:
             Id_count:
               type: count_distinct
-      - name: Sold price
+      - name: sold_price
         description: ""
         meta:
           dimension:
@@ -18,17 +18,17 @@ models:
         meta:
           dimension:
             type: number
-      - name: Summary
+      - name: summary
         description: ""
         meta:
           dimension:
             type: string
-      - name: Type
+      - name: type
         description: ""
         meta:
           dimension:
             type: string
-      - name: year built
+      - name: year_built
         description: ""
         meta:
           dimension:
