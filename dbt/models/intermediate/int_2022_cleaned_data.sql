@@ -7,8 +7,10 @@
 with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
-select "Id"                     as id
-,"Sold Price"                   as sold_price
+select 
+,log("Sold Price"-"Listed Price")   as target
+,"Id"                               as id
+,"Sold Price"                       as sold_price
 ,"Summary"                      as summary
 ,"Type"                         as type
 ,"Year built"                   as year_built
