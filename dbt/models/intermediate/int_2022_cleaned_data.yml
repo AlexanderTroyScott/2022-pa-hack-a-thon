@@ -5,9 +5,10 @@ models:
       - name: Id
         description: ""
         meta:
-          dimension:
-            type: number
-            sql: '"Id"'
+          metric:
+            id_count:
+              type: count_distinct
+              sql: '"Id"'
       - name: Sold price
         description: ""
         meta:
