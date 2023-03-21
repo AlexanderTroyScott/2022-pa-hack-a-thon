@@ -4,11 +4,11 @@ models:
     columns:
       - name: Id
         description: ""
+        sql: '"Id"'
         meta:
           metrics:
-            id_count:
+            Id_count:
               type: count_distinct
-            sql: "Id"
       - name: Sold price
         description: ""
         meta:
