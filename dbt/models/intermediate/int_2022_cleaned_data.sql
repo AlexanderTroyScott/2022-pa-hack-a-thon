@@ -8,7 +8,7 @@ with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
 select CASE 
-    WHEN "Sold Price" = 0 THEN 'Test'
+    WHEN "Sold Price" is NULL THEN 'Test'
     ELSE 'Train'
     END                                     as source
 ,CASE 
