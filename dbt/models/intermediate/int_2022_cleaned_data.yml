@@ -2,6 +2,11 @@ version: 2
 models:
   - name: int_2022_cleaned_data
     columns:
+      - name: source
+        description: "Source dataset"
+        meta:
+          dimension:
+            type: string
       - name: id
         description: ""
         meta:
