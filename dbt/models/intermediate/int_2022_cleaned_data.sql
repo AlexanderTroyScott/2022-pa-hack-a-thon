@@ -10,12 +10,12 @@ with source as (
 select CASE 
     WHEN "Sold Price" = 0 THEN 'Test'
     ELSE 'Train'
-    END                         as source
-,"Sold Price"-"Listed Price"    as target
-,"Id"                           as id
-,"Sold Price"                   as sold_price
-,"Summary"                      as summary
-,"Type"                         as type
+    END                                     as source
+,log("Sold Price")-log("Listed Price")      as target
+,"Id"                                       as id
+,"Sold Price"                               as sold_price
+,"Summary"                                  as summary
+,"Type"                                     as type
 ,"Year built"                   as year_built
 ,"Heating"                      as heating
 ,"Cooling"                      as cooling
