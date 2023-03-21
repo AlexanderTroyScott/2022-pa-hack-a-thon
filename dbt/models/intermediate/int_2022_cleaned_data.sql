@@ -7,7 +7,10 @@
 with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
-select 
+select CASE 
+    WHEN Sold_Price = 0 THEN 'Test'
+    ELSE 'Train'
+    END                         as source
 "Sold Price"-"Listed Price"     as target
 ,"Id"                               as id
 ,"Sold Price"                       as sold_price
