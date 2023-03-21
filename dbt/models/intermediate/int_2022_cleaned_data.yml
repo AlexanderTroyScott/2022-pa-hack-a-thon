@@ -63,22 +63,22 @@ models:
         meta:
           dimension:
             type: number
-      - name: full bathrooms
+      - name: full_bathrooms
         description: ""
         meta:
           dimension:
             type: number
-      - name: total interior livable area
+      - name: area
         description: ""
         meta:
           dimension:
             type: number
-      - name: total spaces
+      - name: total_spaces
         description: ""
         meta:
           dimension:
             type: number
-      - name: garage spaces
+      - name: garage_spaces
         description: ""
         meta:
           dimension:
@@ -88,47 +88,47 @@ models:
         meta:
           dimension:
             type: string
-      - name: elementary school
+      - name: elementary_school
         description: ""
         meta:
           dimension:
             type: string
-      - name: elementary school score
+      - name: elementary_school_score
         description: ""
         meta:
           dimension:
             type: number
-      - name: elementary school distance
+      - name: elementary_school_distance
         description: ""
         meta:
           dimension:
             type: number
-      - name: middle school
+      - name: middle_school
         description: ""
         meta:
           dimension:
             type: string
-      - name: middle school score
+      - name: middle_school_score
         description: ""
         meta:
           dimension:
             type: number
-      - name: middle school distance
+      - name: middle_school_distance
         description: ""
         meta:
           dimension:
             type: number
-      - name: high school
+      - name: high_school
         description: ""
         meta:
           dimension:
             type: string
-      - name: high school score
+      - name: high_school_score
         description: ""
         meta:
           dimension:
             type: number
-      - name: high school distance
+      - name: high_school_distance
         description: ""
         meta:
           dimension:
@@ -138,37 +138,37 @@ models:
         meta:
           dimension:
             type: string
-      - name: heating features
+      - name: heating_features
         description: ""
         meta:
           dimension:
             type: string
-      - name: cooling features
+      - name: cooling_features
         description: ""
         meta:
           dimension:
             type: string
-      - name: appliances included
+      - name: appliances_included
         description: ""
         meta:
           dimension:
             type: string
-      - name: laundry features
+      - name: laundry_features
         description: ""
         meta:
           dimension:
             type: string
-      - name: parking features
+      - name: parking_features
         description: ""
         meta:
           dimension:
             type: string
-      - name: tax assessed value
+      - name: tax_assessed_value
         description: ""
         meta:
           dimension:
             type: number
-      - name: annual tax amount
+      - name: annual_tax_amount
         description: ""
         meta:
           dimension:
@@ -183,12 +183,12 @@ models:
         meta:
           dimension:
             type: number
-      - name: last sold on
+      - name: last_sold_on
         description: ""
         meta:
           dimension:
             type: timestamp
-      - name: last sold price
+      - name: last_sold_price
         description: ""
         meta:
           dimension:
