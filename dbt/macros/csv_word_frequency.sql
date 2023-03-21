@@ -1,19 +1,28 @@
 {% macro word_count(source, column) %}
 
-  {{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
+  
+-- Select the unique words from the heating_features column
+WITH unique_words AS (
+  SELECT DISTINCT {{ column }}
+  FROM {{ source }}
+),
+-- Split the heating_features column into individual words
+split_words AS (
+  SELECT heating_features, regexp_split_to_table({{ column }}, ',\s*') AS word
+  FROM {{ source }}
+),
 
-  WITH split_values AS (
-    SELECT DISTINCT {{ column }},
-           regexp_split_to_table({{ column }}, ',') AS word
-    FROM {{ source }}
-  ),
-  word_counts AS (
-    SELECT word, count(*) AS count
-    FROM split_values
-    GROUP BY word
-  )
-  SELECT word, count
-  FROM word_counts
-  ORDER BY count DESC
+-- Count the frequency of each word
+word_counts AS (
+  SELECT word, COUNT(*) AS frequency
+  FROM split_words
+  GROUP BY word
+)
 
+-- Final select statement that outputs the word frequency summary
+SELECT word, frequency
+FROM word_counts
+ORDER BY frequency DESC
+  
 {% endmacro %}
