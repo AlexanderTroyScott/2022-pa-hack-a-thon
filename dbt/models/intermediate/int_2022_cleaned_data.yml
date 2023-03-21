@@ -160,7 +160,7 @@ models:
         meta:
           dimension:
             type: string
-      - name: appliances_included
+      - name: appliances
         description: ""
         meta:
           dimension:
