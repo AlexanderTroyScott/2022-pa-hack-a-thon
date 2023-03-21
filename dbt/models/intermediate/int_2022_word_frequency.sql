@@ -3,6 +3,6 @@
 {{
     word_count(
         source=ref('int_2022_cleaned_data'),
-        column='heating_feature'
+        column='heating_features'
     )
 }}
