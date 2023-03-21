@@ -1,6 +1,8 @@
 version: 2
 models:
   - name: int_2022_word_frequency
+    depends_on:
+      - int_2022_cleaned_data
     columns:
       - name: word
         description: ""
