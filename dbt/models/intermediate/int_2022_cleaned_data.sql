@@ -8,7 +8,7 @@ with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
 select 
-log("Sold Price"-"Listed Price")   as target
+"Sold Price"-"Listed Price"     as target
 ,"Id"                               as id
 ,"Sold Price"                       as sold_price
 ,"Summary"                      as summary
