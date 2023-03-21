@@ -13,4 +13,4 @@ models:
       +materialized: table
 seeds:
   database: username
-  schema: hackathons
+  #schema: hackathons <--- this adds a suffix to the schema
