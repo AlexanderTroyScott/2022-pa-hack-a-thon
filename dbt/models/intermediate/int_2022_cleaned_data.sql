@@ -7,6 +7,6 @@
 with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
-select Id           as id
+select "Id"           as id
 ,log("Sold Price") as target 
 from source
