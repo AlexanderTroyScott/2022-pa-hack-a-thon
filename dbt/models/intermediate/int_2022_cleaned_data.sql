@@ -42,7 +42,7 @@ select "Id"                     as id
 ,"Listed On"                    as listed_on
 ,"Listed Price"                 as listed_price
 ,"Last Sold On"                 as last_sold_on
-,"Last SOld Price"              as last_sold_price
+,"Last Sold Price"              as last_sold_price
 ,"City"                         as city
 ,"Zip"                          as zip
 ,"State"                        as state
