@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: int_2022_word_frequency
+    columns:
+      - name: word
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: frequency
+        description: ""
+        meta:
+          metrics:
+            frequency_mean:
+              type: average
+            frequency_min:
+              type: min
+            frequency_max:
+              type: max
+            frequency_median:
+              type: median
+            frequency_sum:
+              type: sum
