@@ -22,4 +22,4 @@ word_counts AS (
 -- Final select statement that outputs the word frequency summary
 SELECT word, frequency
 FROM word_counts
-ORDER BY frequency DESC;
+ORDER BY frequency DESC
