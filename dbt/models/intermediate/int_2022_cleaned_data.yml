@@ -16,8 +16,15 @@ models:
       - name: target
         description: "Target variable; log produces a more accurate predictor with skewed data"
         meta:
-          dimension:
-            type: number
+          metrics:
+            target_mean:
+              type: average
+            target_min:
+              type: min
+            target_max:
+              type: max
+            target_median:
+              type: median
       - name: summary
         description: ""
         meta:
