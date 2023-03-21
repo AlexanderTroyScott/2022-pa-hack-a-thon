@@ -14,7 +14,7 @@ models:
           dimension:
             type: number
             sql: '"Sold Price"'
-      - name: Target
+      - name: target
         description: "Target variable; log produces a more accurate predictor with skewed data"
         meta:
           dimension:
