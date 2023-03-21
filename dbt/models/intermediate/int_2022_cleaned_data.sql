@@ -12,7 +12,8 @@ select CASE
     ELSE 'Train'
     END                                     as source
 ,CASE 
-    WHEN "Sold Price" = 0 THEN 0
+    WHEN "Sold Price" = 0 
+        or "Listed Price" = 0 THEN 0
     ELSE log("Sold Price")-log("Listed Price") 
     END                                     as target
 ,"Id"                                       as id
