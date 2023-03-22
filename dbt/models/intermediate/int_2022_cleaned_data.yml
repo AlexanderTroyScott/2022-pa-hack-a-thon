@@ -224,7 +224,7 @@ models:
 metrics:
   - name: cte_80_abs_target
     label: target abs 80% CTE
-    timestamp: no
+    timestamp: year_end
     description: >
       Calculates the 80% Conditional Tail Expectation for the absolute value of the "target" variable.
     # use the absolute value of the target variable
