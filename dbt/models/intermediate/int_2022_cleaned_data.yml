@@ -185,12 +185,12 @@ models:
         meta:
           dimension:
             type: number
-      - name: listed on
+      - name: listed_on
         description: ""
         meta:
           dimension:
             type: timestamp
-      - name: listed price
+      - name: listed_price
         description: ""
         meta:
           dimension:
