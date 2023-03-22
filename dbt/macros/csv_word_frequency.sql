@@ -14,6 +14,6 @@
   )
   SELECT word, frequency
   FROM word_counts
-  ORDER BY count DESC
+  ORDER BY frequency DESC
 
 {% endmacro %}
