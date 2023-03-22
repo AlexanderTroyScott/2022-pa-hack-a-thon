@@ -7,19 +7,10 @@
 with source as (
     select * from {{ ref('stg_2022_advanced') }}
     )
-select CASE 
-    WHEN "Sold Price" is NULL THEN 'Test'
-    ELSE 'Train'
-    END                                     as source
-,CASE 
-    WHEN "Sold Price" = 0 
-        or "Listed Price" = 0 THEN 0
-    ELSE log("Sold Price")-log("Listed Price") 
-    END                                     as target
-,"Id"                                       as id
-,"Sold Price"                               as sold_price
-,"Summary"                                  as summary
-,"Type"                                     as type
+select "Id"                     as id
+,"Sold Price"                   as sold_price
+,"Summary"                      as summary
+,"Type"                         as type
 ,"Year built"                   as year_built
 ,"Heating"                      as heating
 ,"Cooling"                      as cooling
@@ -55,4 +46,19 @@ select CASE
 ,"City"                         as city
 ,"Zip"                          as zip
 ,"State"                        as state
-from source
+from source,
+adjusted as 
+(select * 
+,CASE 
+    WHEN sold_price is NULL THEN 'Test'
+    ELSE 'Train'
+    END                                         as source
+,CASE 
+    WHEN sold_price = 0 
+        or listed_price = 0 THEN 0
+    ELSE log(sold_price)-log(listed_price) 
+    END                                         as target
+,coalesce(listed_price/area, NULL)              as price_per_sqrft
+)
+
+select * from adjusted
