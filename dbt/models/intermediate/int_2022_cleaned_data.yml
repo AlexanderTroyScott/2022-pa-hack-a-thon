@@ -12,7 +12,7 @@ models:
         meta:
           metrics:
             Id_count:
-              type: count_distinct
+              calculation_method: count_distinct
       - name: sold_price
         description: ""
         meta:
@@ -226,7 +226,8 @@ metrics:
     description: >
       Calculates the 80% Conditional Tail Expectation for the absolute value of the "target" variable.
     # use the absolute value of the target variable
-    sql: >
+    calculation_method: derived
+    expression: >
       with cte as (
         select abs(target) as target_abs
         from {{ ref('int_2022_cleaned_data') }}
