@@ -20,6 +20,7 @@ with source as (
     ,"Total interior livable area"  as area
     ,"Total spaces"                 as living_spaces
     ,"Garage spaces"                as garage_spaces
+    ,"Region"                       as region
     ,"Elementary School"            as elementary_school
     ,"Elementary School Score"      as elementary_school_score
     ,"Elementary School Distance"   as elementary_school_distance
