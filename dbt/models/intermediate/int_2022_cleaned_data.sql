@@ -45,7 +45,7 @@ with source as (
     ,"Zip"                          as zip
     ,"State"                        as state
     from {{ ref('stg_2022_advanced') }}
-    ),
+    )
 select * 
 ,CASE 
     WHEN sold_price is NULL THEN 'Test'
