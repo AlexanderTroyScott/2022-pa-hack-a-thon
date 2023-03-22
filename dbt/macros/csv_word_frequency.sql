@@ -1,3 +1,5 @@
+{% from "dbt_utils.generate_alias" import generate_alias %}
+
 {% macro word_count(source, column) %}
 
   {{ config(materialized='incremental') }}
