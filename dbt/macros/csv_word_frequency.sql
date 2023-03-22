@@ -1,6 +1,4 @@
 {% macro word_count(source, column) %}
-
-{{ config(materialized='table') }}
   
 -- Select the unique words from the heating_features column
 WITH unique_words AS (
