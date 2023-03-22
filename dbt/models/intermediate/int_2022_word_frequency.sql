@@ -10,4 +10,4 @@ parking_word_counts AS (
 SELECT *
 FROM heating_word_counts
 JOIN cooling_word_counts ON heating_word_counts.word = cooling_word_counts.word
-JOIN parking_word_counts ON heating_word_counts.word = parking_word_counts.word
+JOIN parking_word_counts ON heating_word_counts.word = parking_word_counts.word;
