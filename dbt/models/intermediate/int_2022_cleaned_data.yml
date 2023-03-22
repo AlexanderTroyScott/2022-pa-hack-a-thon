@@ -221,30 +221,30 @@ models:
           dimension:
             type: string
 
-metrics:
-  - name: cte_80_abs_target
-    label: target abs 80% CTE
-    timestamp: year_end
-    description: >
-      Calculates the 80% Conditional Tail Expectation for the absolute value of the "target" variable.
+#metrics:
+#  - name: cte_80_abs_target
+#    label: target abs 80% CTE
+#    timestamp: year_end
+#    description: >
+#      Calculates the 80% Conditional Tail Expectation for the absolute value of the "target" variable.
     # use the absolute value of the target variable
-    calculation_method: derived
-    expression: >
-      with cte as (
-        select abs(target) as target_abs
-        from {{ ref('int_2022_cleaned_data') }}
-        where target is not null
-      ),
-      # calculate the 80th percentile value of the absolute value of target variable
-      percentile_80th as (
-        select percentile_cont(0.8) within group (order by target_abs) as percentile_value
-        from cte
-      ),
+#    calculation_method: derived
+#    expression: >
+#      with cte as (
+#        select abs(target) as target_abs
+#        from {{ ref('int_2022_cleaned_data') }}
+#        where target is not null
+#      ),
+#      # calculate the 80th percentile value of the absolute value of target variable
+#      percentile_80th as (
+#        select percentile_cont(0.8) within group (order by target_abs) as percentile_value
+#        from cte
+#      ),
       # calculate the expected value of the absolute value of target variable above the 80th percentile
-      cte_80th_percentile as (
-        select avg(target_abs) as cte_80
-        from cte
-        where target_abs >= (select percentile_value from percentile_80th)
-      )
-      select cte_80
-      from cte_80th_percentile
+#      cte_80th_percentile as (
+#        select avg(target_abs) as cte_80
+#        from cte
+#        where target_abs >= (select percentile_value from percentile_80th)
+#      )
+#      select cte_80
+#      from cte_80th_percentile
