@@ -1,5 +1,3 @@
-{% from "dbt_utils.generate_alias" import generate_alias %}
-
 {% macro word_count(source, column) %}
 
   {{ config(materialized='incremental') }}
@@ -11,7 +9,7 @@
   ),
   word_counts AS (
     SELECT word, count(*) AS frequency
-    FROM {{ generate_alias('split_values') }}
+    FROM split_values
     GROUP BY word
   )
   SELECT word, frequency
