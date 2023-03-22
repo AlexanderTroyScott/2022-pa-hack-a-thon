@@ -47,7 +47,8 @@ with source as (
     ,"State"                        as state
     from {{ ref('stg_2022_advanced') }}
     )
-select * 
+select *
+,DATE('2022-12-31')                             as year_end
 ,CASE 
     WHEN sold_price is NULL THEN 'Test'
     ELSE 'Train'
