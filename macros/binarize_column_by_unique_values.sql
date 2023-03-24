@@ -16,7 +16,7 @@ with data as (
     alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0;
 {% endfor %}
 
-{% set column_names = ["'" + value["value"] + "'" for value in unique_values %}
+{% set column_names = ["'" + value["value"].replace("'", "''") + "'" for value in unique_values %}
 
 update {{ quoted_table_name }}
 set {% for value in unique_values %}
