@@ -3,10 +3,11 @@ models:
   - name: stg_2023_advanced
     columns:
       - name: tweet_id
-        description: ""
+        description: "An unique identifier for each tweet"
         meta:
           dimension:
             type: number
+            sql: 
       - name: screen_name
         description: ""
         meta:
