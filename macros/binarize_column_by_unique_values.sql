@@ -8,20 +8,19 @@ with data as (
     from {{ quoted_table_name }}
 )
 
-{% set unique_values = run_query("select distinct value from data") %};
+{% set unique_values = run_query("select distinct value from data") %}
 
 {% for value in unique_values %}
-    {% set value_str = value["value"] %};
-    {% set binary_column_name = new_column_prefix + "_" + value_str %};
+    {% set value_str = value["value"] %}
+    {% set binary_column_name = new_column_prefix + "_" + value_str %}
     alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0;
 {% endfor %}
 
 {% set column_names = ["'" + value["value"].replace("'", "''") + "'" for value in unique_values %]};
-
 update {{ quoted_table_name }}
 set {% for value in unique_values %}
         {{ new_column_prefix + "_" + value["value"] }} = 1{% if not loop.last %},{% endif %}
     {% endfor %}
-where lower(trim(unnest(string_to_array({{ column_name }}::text, ',')))) in ({{ column_names | join(",") }})
+where lower(trim(unnest(string_to_array({{ column_name }}::text, ',')))) in ({{ column_names | join(",") }});
 
 {% endmacro %}
