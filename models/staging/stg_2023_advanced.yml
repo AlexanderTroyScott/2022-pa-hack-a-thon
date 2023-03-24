@@ -1,0 +1,15 @@
+version: 2
+models:
+  - name: stg_2023_advanced
+    columns:
+      - name: tweet_id
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: screen_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+         
