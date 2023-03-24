@@ -1,18 +1,5 @@
 version: 2
 
-# Replace the target_table and target_column values below with your actual values
-vars:
-  target_table: int_2023_data
-  target_column: target
-
-# Calculate the variance of the target column using the VAR() function
-metrics:
-  - name: variance_of_target
-    description: Variance of the target column
-    sql: |
-      SELECT VAR({{ target }})
-      FROM {{ int_2023_data }}
-
 models:
   - name: int_2023_data
     columns:
@@ -88,6 +75,8 @@ models:
           metrics:
             target_min:
               type: min
+              filters: 
+                - source: 'Train'
             target_max:
               type: max
             target_median:
