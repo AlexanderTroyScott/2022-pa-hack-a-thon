@@ -1,5 +1,5 @@
-
-with select * from int_2023_data,
+with source as (select * from {{ ref('stg_2023_advanced') }})
+,
 -- define the macro to split and lowercase the column
 {% macro split_and_lowercase(column_name) %}
   select distinct lower(trim(unnest(regexp_split_to_array({{ hashtags }}, ',')))) as value
@@ -22,4 +22,4 @@ select
     case when lower(hashtags) like '%{{ value.value }}%' then 1 else 0 end as {{ value.value }}
     {% if not loop.last %},{% endif %}
   {% endfor %}
-from {{ ref('int_2023_data') }}
+from source
