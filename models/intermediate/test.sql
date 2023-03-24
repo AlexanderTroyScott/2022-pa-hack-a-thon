@@ -1,25 +1,19 @@
-with source as (select * from {{ ref('stg_2023_advanced') }})
-,
--- define the macro to split and lowercase the column
-{% macro split_and_lowercase(column_name) %}
-  select distinct lower(trim(unnest(regexp_split_to_array({{ column_name }}, ',')))) as value
+--with source as (select * from {{ ref('stg_2023_advanced') }})
+--,
+-- Define a macro to split a comma-separated string into an array of strings
+{% macro split_by_comma(column_name) %}
+  SELECT ARRAY_AGG(DISTINCT TRIM(LOWER(UNNEST(SPLIT({{ column_name }}, ','))))) AS {{ column_name }}_array
 {% endmacro %}
 
--- define the model to transform the data
-{{
-
-  config(
-    materialized='table',
-    unique_key='id',
-  )
-
-}}
-
-select
-  id,
-  lower(hackathons) as column_name,
-  {% for value in run_macro('split_and_lowercase', args=[ref('int_2023_data.hashtags')]) %}
-    case when lower(hashtags) like '%{{ value.value }}%' then 1 else 0 end as {{ value.value }}
-    {% if not loop.last %},{% endif %}
+-- Use the macro to split the "hashtags" column and create a new table with binary columns for each unique hashtag
+SELECT 
+  *,
+  {% for hashtag in ref('int_2023_data') %} 
+    CASE WHEN '{{ hashtag }}' IN UNNEST(hashtags_array) THEN 1 ELSE 0 END AS {{ hashtag }}_binary{% if not loop.last %},{% endif %}
   {% endfor %}
-from source
+FROM (
+  SELECT 
+    *,
+    {% raw %}{{ split_by_comma('hashtags') }}{% endraw %}
+  FROM {{ ref('int_2023_data') }}
+) subquery
