@@ -5,8 +5,8 @@
     )
 }}
 with source as (select * from {{ ref('stg_2023_advanced') }})
-, adjusted as
-(
+
+
 select tweet_id as tweet_id
     ,screen_name                as screen_name
     ,created_at::timestamp AT TIME ZONE 'UTC' AT TIME ZONE 'America/Los_Angeles' as created_at
@@ -24,9 +24,10 @@ select tweet_id as tweet_id
     ELSE 'Train'
     END                                         as source
 ,engagement_count                               as target
-,0                                              as emoji_rocket
+,CASE
+    WHEN full_text LIKE '%🚀%' then 1
+    ELSE 0
+    END                                         as emoji_rocket
 from source
-)
-update adjusted where full_text LIKE '%🚀%' set emoji_rocket = 1
-;
-select * from adjusted
+
+
