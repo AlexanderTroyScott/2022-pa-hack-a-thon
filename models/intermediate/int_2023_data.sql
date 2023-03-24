@@ -28,3 +28,5 @@ select tweet_id as tweet_id
 from source
 )
 update adjusted where full_text LIKE '%🚀%' set emoji_rocket = 1
+;
+select * from adjusted
