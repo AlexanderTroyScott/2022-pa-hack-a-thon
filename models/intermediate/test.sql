@@ -1,6 +1,5 @@
--- define the source data
-{{source('hackathons', 'int_2023_data')}}
 
+with select * from int_2023_data,
 -- define the macro to split and lowercase the column
 {% macro split_and_lowercase(column_name) %}
   select distinct lower(trim(unnest(regexp_split_to_array({{ hashtags }}, ',')))) as value
