@@ -6,16 +6,8 @@ models:
         description: "An unique identifier for each tweet"
         meta:
           metrics:
-            tweet_id_mean:
-              type: average
-            tweet_id_min:
-              type: min
-            tweet_id_max:
-              type: max
-            tweet_id_median:
-              type: median
-            tweet_id_sum:
-              type: sum
+            tweet_id_count:
+              type: count
       - name: screen_name
         description: ""
         meta:
@@ -71,3 +63,15 @@ models:
         meta:
           dimension:
             type: number
+      - name: target
+        description: "Target variable for predictive analytics model"
+        meta:
+          metrics:
+            target_min:
+              type: min
+            target_max:
+              type: max
+            target_median:
+              type: median
+            target_sum:
+              type: sum
