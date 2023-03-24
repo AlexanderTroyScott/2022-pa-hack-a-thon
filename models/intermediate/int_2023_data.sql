@@ -23,6 +23,5 @@ select tweet_id as tweet_id
     ELSE 'Train'
     END                                         as source
 ,engagement_count                               as target
+,IF full_text LIKE '%🚀%' THEN 1 else 0         as emoji_rocket
 from source
-
-
