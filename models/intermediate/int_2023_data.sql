@@ -5,7 +5,7 @@
     )
 }}
 with source as (select * from {{ ref('stg_2023_advanced') }})
-,
+
 select tweet_id as tweet_id
     ,screen_name                as screen_name
 
