@@ -4,7 +4,7 @@ WITH split_data AS (
   SELECT
     LOWER({{ column }}) AS {{ column }},
     REGEXP_SPLIT_TO_TABLE(LOWER({{ column }}), ',') AS split_column
-  FROM {{ ref('my_table') }}
+  FROM {{ ref('int_2023_data') }}
 ),
 
 unique_data AS (
