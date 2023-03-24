@@ -12,7 +12,7 @@ with data as (
 
 {% for value in unique_values %}
     {% set value_str = value["value"] %}
-    {% set binary_column_name = new_column_prefix + "_" + value_str %}
+    {% set binary_column_name = new_column_prefix + "_" + value_str %};
     alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0;
 {% endfor %}
 
