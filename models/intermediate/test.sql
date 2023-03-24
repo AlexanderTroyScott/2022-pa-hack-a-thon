@@ -1,4 +1,4 @@
-CREATE TABLE my_table_binarized AS
+
 SELECT
   *,
   {% for value in run_query("SELECT DISTINCT UNNEST(string_to_array(int_2023_data.hashtags, ',')) AS value FROM hackathons.int_2023_data") %}
