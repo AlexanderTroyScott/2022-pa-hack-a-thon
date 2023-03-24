@@ -60,4 +60,3 @@ select *
     END                                         as target
 ,coalesce(listed_price/area, NULL)              as price_per_sqrft
 from source
-
