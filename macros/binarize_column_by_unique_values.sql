@@ -1,26 +1,24 @@
-{% macro binarize_column_by_unique_values(table_name, column_name, new_column_prefix) %}
+{% macro binarize_columns(table, column, prefix) %}
 
-{% set quoted_table_name = ref(table_name).name %}
+    {% set prefix_length = prefix | length %}
+    {% set field_names = [] %}
 
-with data as (
-    select {{ column_name }},
-           lower(trim(unnest(string_to_array({{ column_name }}::text, ',')))) as value
-    from {{ quoted_table_name }}
-)
-
-{% set unique_values = run_query("select distinct value from data") %}
-
-{% for value in unique_values %}
-    {% set value_str = value["value"] %}
-    {% set binary_column_name = new_column_prefix + "_" + value_str %}
-    alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0;
-{% endfor %}
-
-{% set column_names = ["'" + value["value"].replace("'", "''") + "'" for value in unique_values %]};
-update {{ quoted_table_name }}
-set {% for value in unique_values %}
-        {{ new_column_prefix + "_" + value["value"] }} = 1{% if not loop.last %},{% endif %}
+    {# create a list of unique field names without prefix #}
+    {% for field in column.lower().split(',') %}
+        {% if prefix == field[0:prefix_length] %}
+            {% set field_name = field[prefix_length:] %}
+            {% if field_name not in field_names %}
+                {% do field_names.append(field_name) %}
+            {% endif %}
+        {% endif %}
     {% endfor %}
-where lower(trim(unnest(string_to_array({{ column_name }}::text, ',')))) in ({{ column_names | join(",") }});
+
+    SELECT
+        {% for field_name in field_names %}
+            CASE WHEN {{ column }} ILIKE '{{ prefix }}{{ field_name }}%'
+            THEN 1 ELSE 0 END as {{ prefix }}{{ field_name }},
+        {% endfor %}
+        *
+    FROM {{ table }}
 
 {% endmacro %}
