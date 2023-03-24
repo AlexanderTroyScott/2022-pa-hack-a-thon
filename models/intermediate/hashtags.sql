@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 {% set hashtags = run_query("SELECT array_agg(hashtag) AS hashtag_array FROM (SELECT DISTINCT TRIM(LOWER(regexp_split_to_table(hashtags, ','))) AS hashtag FROM {{ ref('int_2023_data') }}) subquery").rows[0]['hashtag_array'] %}
 
