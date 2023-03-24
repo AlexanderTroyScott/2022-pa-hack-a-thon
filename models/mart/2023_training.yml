@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: 2023_training
+  - name: training_2023
     depends_on: int_2023_data
     columns:
       - name: screen_name
