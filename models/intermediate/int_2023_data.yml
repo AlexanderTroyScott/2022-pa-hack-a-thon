@@ -85,8 +85,3 @@ models:
               type: average
             target_sum:
               type: sum
-      - name: target_variance
-        description: My column that uses the variance metric
-        sql: |
-          SELECT {{ ref('variance_of_target') }} AS target_variance
-          FROM {{ source('int_2023_data') }}
