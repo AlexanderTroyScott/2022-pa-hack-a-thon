@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: int_2023_data
+  - name: 2023_expert_training
     schema: models
     depends_on: int_2023_data
     columns:
