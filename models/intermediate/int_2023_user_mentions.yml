@@ -15,3 +15,21 @@ models:
           metrics:
             frequency_sum:
               type: sum
+
+version: 2
+models:
+  - name: int_2023_hashtag_counts
+    depends_on:
+      - int_2023_data
+    columns:
+      - name: word
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: frequency
+        description: ""
+        meta:
+          metrics:
+            frequency_sum:
+              type: sum
