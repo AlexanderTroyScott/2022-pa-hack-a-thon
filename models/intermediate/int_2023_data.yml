@@ -79,9 +79,17 @@ models:
                 - source: 'Train'
             target_max:
               type: max
+              filters: 
+                - source: 'Train'
             target_median:
               type: median
+              filters: 
+                - source: 'Train'
             target_mean:
               type: average
+              filters: 
+                - source: 'Train'
             target_sum:
               type: sum
+              filters: 
+                - source: 'Train'
