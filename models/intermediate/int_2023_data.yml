@@ -7,7 +7,7 @@ models:
         meta:
           metrics:
             tweet_id_count:
-              calculation_method: count_distinct
+              type: count
       - name: screen_name
         description: ""
         meta:
