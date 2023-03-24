@@ -28,15 +28,4 @@ select tweet_id as tweet_id
     WHEN full_text LIKE '%🚀%' then 1
     ELSE 0
     END                                         as emoji_rocket
-from source as int_2023_data,
-
-{% set hashtags = run_query("SELECT array_agg(hashtag) AS hashtag_array FROM (SELECT DISTINCT TRIM(LOWER(regexp_split_to_table(hashtags, ','))) AS hashtag FROM {{ ref('int_2023_data') }}) subquery").rows[0]['hashtag_array'] %}
-
-{% if hashtags %}
-{% for h in hashtags %}
-  EXECUTE 'ALTER TABLE int_2023_data ADD COLUMN hashtag_' || h || ' BOOLEAN DEFAULT FALSE';
-  UPDATE int_2023_data SET hashtag_' || h || ' = TRUE WHERE LOWER(hashtags) LIKE ''%' || h || '%''';
-{% endfor %}
-{% endif %}
-
-select * from int_2023_data
+from source as int_2023_data
