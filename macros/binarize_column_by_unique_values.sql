@@ -11,9 +11,9 @@ with data as (
 {% set unique_values = run_query("select distinct value from data") %};
 
 {% for value in unique_values %}
-    {% set value_str = value["value"] %}
-    {% set binary_column_name = new_column_prefix + "_" + value_str %}
-    alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0
+    {% set value_str = value["value"] %};
+    {% set binary_column_name = new_column_prefix + "_" + value_str %};
+    alter table {{ quoted_table_name }} add column {{ binary_column_name }} int default 0;
 {% endfor %}
 
 {% set column_names = ["'" + value["value"].replace("'", "''") + "'" for value in unique_values %]};
