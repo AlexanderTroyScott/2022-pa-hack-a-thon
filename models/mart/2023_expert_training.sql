@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias = '2023_expert_training'
+        alias = '2023_training'
     )
 }}
 with source as ( 
