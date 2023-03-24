@@ -30,4 +30,4 @@ select tweet_id as tweet_id
     END                                         as emoji_rocket
 from source
 
-
+ {{ binarize_column('hashtags') }}
