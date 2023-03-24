@@ -42,4 +42,13 @@ models:
         meta:
           dimension:
             type: string
-
+      - name: user_mentions 
+        description: "The names of other users that are tagged in the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: urls 
+        description: "URLs used in the tweet"
+        meta:
+          dimension:
+            type: string
