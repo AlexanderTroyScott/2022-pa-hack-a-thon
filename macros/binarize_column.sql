@@ -26,6 +26,6 @@ binned_data AS (
 )
 
 SELECT *
-FROM binned_data
+FROM binned_data;
 
 {% endmacro %}
