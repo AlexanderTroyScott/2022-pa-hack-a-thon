@@ -69,6 +69,7 @@ models:
         meta:
           dimension:
             type: string
+        
       - name: target
         description: "Target variable for predictive analytics model"
         meta:
@@ -93,3 +94,8 @@ models:
               type: sum
               filters: 
                 - source: 'Train'
+      - name: emoji_rocket
+        description: "Whether or not the full text contains the rocket emoji"
+        meta:
+          dimension:
+            type: boolean
