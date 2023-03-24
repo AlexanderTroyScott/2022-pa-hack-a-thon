@@ -1,0 +1,67 @@
+version: 2
+models:
+  - name: int_2023_data
+    depends_on: int_2023_data
+    columns:
+      - name: screen_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: created_at
+        description: "The date and time the tweet was tweeted"
+        meta:
+          dimension:
+            type: timestamp
+      - name: full_text 
+        description: "The full, unedited text of the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: display_text_range 
+        description: "The length of the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: in_reply_to_screen_name 
+        description: "The names of users if the tweet was replying to another tweet"
+        meta:
+          dimension:
+            type: string
+      - name: is_quote_status 
+        description: "TRUE if quoting another tweet"
+        meta:
+          dimension:
+            type: string
+      - name: includes_media 
+        description: "TRUE if the tweet includes media"
+        meta:
+          dimension:
+            type: string
+      - name: hashtags 
+        description: "A list of all the hashtags from the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: user_mentions 
+        description: "The names of other users that are tagged in the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: urls 
+        description: "URLs used in the tweet"
+        meta:
+          dimension:
+            type: string
+      - name: target
+        description: "Target variable for predictive analytics model"
+        meta:
+          metrics:
+            target_min:
+              type: min
+            target_max:
+              type: max
+            target_median:
+              type: median
+            target_sum:
+              type: sum
