@@ -73,5 +73,7 @@ models:
               type: max
             target_median:
               type: median
+            target_mean:
+              type: average
             target_sum:
               type: sum
