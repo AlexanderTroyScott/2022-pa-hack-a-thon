@@ -63,6 +63,11 @@ models:
         meta:
           dimension:
             type: number
+      - name: source 
+        description: "Whether the data came from the training or testing dataset"
+        meta:
+          dimension:
+            type: string
       - name: target
         description: "Target variable for predictive analytics model"
         meta:
