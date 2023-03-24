@@ -15,6 +15,7 @@ select screen_name              as screen_name
     ,hashtags                   as hashtags
     ,user_mentions              as user_mentions
     ,urls                       as urls
+    ,emoji_rocket               as emoji_rocket
     ,target                     as target
 from 
 {{ ref('int_2023_data') }}
