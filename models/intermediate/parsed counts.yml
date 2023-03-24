@@ -30,6 +30,3 @@ models:
           metrics:
             frequency_sum:
               type: sum
-  - name: test
-    depends_on:
-      - int_2023_data
