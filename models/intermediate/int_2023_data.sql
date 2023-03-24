@@ -19,9 +19,4 @@ with source as (select tweet_id as tweet_id
     from {{ ref('stg_2023_advanced') }}
     )
 select *
-,CASE 
-    WHEN engagement_count is NULL THEN 'Test'
-    ELSE 'Train'
-    END                                         as source
-,engagement_count                               as target
 from source
