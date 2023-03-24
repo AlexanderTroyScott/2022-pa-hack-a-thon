@@ -1,4 +1,18 @@
 version: 2
+
+# Replace the target_table and target_column values below with your actual values
+vars:
+  target_table: int_2023_data
+  target_column: target
+
+# Calculate the variance of the target column using the VAR() function
+metrics:
+  - name: variance_of_target
+    description: Variance of the target column
+    sql: |
+      SELECT VAR({{ target }})
+      FROM {{ int_2023_data }}
+
 models:
   - name: int_2023_data
     columns:
@@ -82,3 +96,8 @@ models:
               type: average
             target_sum:
               type: sum
+      - name: target_variance
+        description: My column that uses the variance metric
+        sql: |
+          SELECT {{ ref('variance_of_target') }} AS target_variance
+          FROM {{ source('int_2023_data') }}
