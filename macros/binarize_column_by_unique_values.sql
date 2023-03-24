@@ -8,7 +8,7 @@ with data as (
     from {{ quoted_table_name }}
 )
 
-{% set unique_values = run_query("select distinct value from data") %}
+{% set unique_values = run_query("select distinct value from data") %};
 
 {% for value in unique_values %}
     {% set value_str = value["value"] %}
