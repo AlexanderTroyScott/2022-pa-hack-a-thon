@@ -1,0 +1,13 @@
+version: 2
+models:
+  - name: int_2023_emoji_counts
+    depends_on:
+      - int_2023_data
+    columns:
+      - name: emoji
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: count
+        description: ""
