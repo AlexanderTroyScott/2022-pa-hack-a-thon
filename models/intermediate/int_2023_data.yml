@@ -2,6 +2,12 @@ version: 2
 models:
   - name: int_2023_data
     columns:
+      - name: tweet_id
+        description: "An unique identifier for each tweet"
+        meta:
+          metrics:
+            tweet_id_count:
+              calculation_method: count_distinct
       - name: screen_name
         description: ""
         meta:
