@@ -6,7 +6,7 @@ models:
         description: "An unique identifier for each tweet"
         meta:
           metrics:
-            Id_count:
+            tweet_id_count:
               calculation_method: count_distinct
       - name: screen_name
         description: ""
