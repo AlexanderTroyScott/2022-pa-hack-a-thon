@@ -11,7 +11,7 @@ select source                                    as source
     ,extract( YEAR from created_at)                            as created_year
     ,extract( YEAR from created_at)                           as created_month
     ,CASE 
-        WHEN EXTRACT(HOUR FROM your_timestamp_column) 
+        WHEN EXTRACT(HOUR FROM created_at) 
             BETWEEN 7 and 21 then TRUE
         ELSE 'FALSE'                                END AS created_time_between_7am_9pm
     ,full_text                                   as full_text
