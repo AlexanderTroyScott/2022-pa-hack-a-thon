@@ -10,8 +10,8 @@ unique_hashtags AS (
 )
 SELECT
   tweet_id
-  {% for hashtag in unique_hashtags %}
-    ,CASE WHEN '{{ hashtag.hashtag }}' = ANY(hashtags) THEN 1 ELSE 0 END AS {{ hashtag.hashtag }}
+  {% for row in unique_hashtags %}
+    ,CASE WHEN '{{ row.hashtag }}' = ANY(hashtags) THEN 1 ELSE 0 END AS {{ row.hashtag }}
   {% endfor %}
 FROM hashtag_data
 
