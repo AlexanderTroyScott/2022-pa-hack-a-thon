@@ -20,3 +20,7 @@ conn = LibPQ.Connection(
 query = "SELECT * FROM hackathons.training_2023"
 result = LibPQ.execute(conn, query)
 df = DataFrame(result)
+
+#Make train and test datasets
+train_df = filter(row -> row.source == "Train", df)
+test_df = filter(row -> row.source == "Test", df)
