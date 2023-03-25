@@ -9,7 +9,7 @@ select source                                    as source
     ,screen_name                                 as screen_name 
  --   ,created_at                                  as created_at
     ,extract( YEAR from created_at)                            as created_year
-    ,extract( YEAR from created_at)                           as created_month
+    ,extract( month from created_at)                           as created_month
     ,CASE 
         WHEN EXTRACT(HOUR FROM created_at) 
             BETWEEN 7 and 21 then TRUE
