@@ -9,7 +9,7 @@ WITH split_data AS (
 ),
 
 unique_data AS (
-  SELECT DISTINCT split_column
+  SELECT DISTINCT trim(split_column)
   FROM split_data
 )
 
