@@ -14,6 +14,6 @@ unique_data AS (
 ),
 
 SELECT *
-FROM unique_data;
+FROM unique_data
 
 {% endmacro %}
