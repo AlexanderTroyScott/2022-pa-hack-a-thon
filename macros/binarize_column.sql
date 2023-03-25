@@ -8,12 +8,7 @@ WITH split_data AS (
   where {{ column }} is not NULL
 ),
 
-unique_data AS (
-  SELECT DISTINCT split_column
-  FROM split_data
-),
-
 SELECT *
-FROM unique_data
+FROM split_data
 
 {% endmacro %}
