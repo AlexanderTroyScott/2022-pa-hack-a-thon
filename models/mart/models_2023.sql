@@ -14,10 +14,10 @@ select source                               as source
     ,is_quote_status          as is_quote_status
     ,includes_media           as includes_media
   --  ,hashtags                   as hashtags
-    ,user_mentions          as user_mentions
+    ,coalesce(user_mentions,"NONE")          as user_mentions
  --   ,urls                       as urls
     ,emoji_rocket          as emoji_rocket
-    ,target                as target
+    ,coalesce(target,0)                as target
 from 
 {{ ref('int_2023_data') }}
 )
