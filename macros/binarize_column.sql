@@ -3,7 +3,7 @@
 WITH split_data AS (
   SELECT
     LOWER({{ column }}) AS {{ column }},
-    {% for element in REGEXP_SPLIT_TO_TABLE(trim(LOWER(column)), ',') %}
+    {% for element in REGEXP_SPLIT_TO_TABLE(column, ',') %}
       ,CASE
         WHEN {{ element }} IS NOT NULL THEN 1
         ELSE 0
