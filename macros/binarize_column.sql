@@ -2,7 +2,7 @@
 WITH split_data AS (
   SELECT
     {{ column }} AS {{ column }}
-    {% for element in unnest(STRING_SPLIT({column}, ',')) %}
+    {% for element in unnest(STRING_SPLIT(hashtags, ',')) %}
       ,CASE
         WHEN {{ element }} IS NOT NULL THEN 1
         ELSE 0
