@@ -8,14 +8,12 @@ WITH split_data AS (
   where {{ column }} is not NULL
 ),
 
-unique_data AS (
-  SELECT DISTINCT split_column
-  FROM split_data
-),
 binned_data AS (
   SELECT
     {{ column }}
-    {% for row in unique_data %}
+    {% for row in (SELECT DISTINCT split_column
+  FROM split_data
+) %}
       ,CASE
         WHEN {{ row.split_column }} IS NOT NULL THEN 1
         ELSE 0
