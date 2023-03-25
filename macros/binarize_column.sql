@@ -3,7 +3,7 @@
 
 WITH split_data AS (
   SELECT *
-  {% set array = hashtags %}
+  {% set array = string_to_array(hashtags) %}
   {% for element in  array %}
       ,1 AS {{ prefix }}_{{ element }}
   {% endfor %}
