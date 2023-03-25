@@ -1,8 +1,8 @@
 {% macro binarize_column(column, prefix) %}
 WITH split_data AS (
   SELECT
-    LOWER({{ column }}) AS {{ column }},
-    {% for element in unnest(REGEXP_SPLIT_TO_TABLE(hashtags, ',')) %}
+    {{ column }} AS {{ column }},
+    {% for element in REGEXP_SPLIT_TO_TABLE(hashtags, ',') %}
       ,CASE
         WHEN {{ element }} IS NOT NULL THEN 1
         ELSE 0
