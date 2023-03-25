@@ -4,7 +4,7 @@ WITH split_data AS (
     {{ column }} AS {{ column }}
     {% for element in split_part(hashtags, ',',1) %}
       ,CASE
-        WHEN {{ element }} IS NOT NULL THEN 1
+        WHEN  element IS NOT NULL THEN 1
         ELSE 0
       END AS {{ prefix }}_{{ element }}
     {% endfor %}
