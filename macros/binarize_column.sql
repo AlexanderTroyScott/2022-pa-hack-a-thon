@@ -15,5 +15,5 @@ SELECT
     CASE WHEN LOWER(UNNEST(hashtags)) = '{{ row.hashtag }}' THEN 1 ELSE 0 END AS {{ row.hashtag }}
     {% if not loop.last %},{% endif %}
   {% endfor %}
-FROM hashtag_data;
+FROM hashtag_data
 {% endmacro %}
