@@ -1,8 +1,9 @@
 {% macro binarize_column(column, prefix) %}
 
-{% set column_values =  string_to_array(hashtags, ',') %}
+
 WITH split_data AS (
   SELECT *
+  {% set column_values =  string_to_array(hashtags, ',') %}
   {% for element in  column_values %}
       ,1 AS {{ prefix }}_{{ element }}
     {% endfor %}
