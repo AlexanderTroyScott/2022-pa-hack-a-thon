@@ -25,7 +25,7 @@ select source                                    as source
     ,hashtags                                    as hashtags
     --,user_mentions                                as user_mentions
     ,Case 
-        When user_mentions = FALSE then FALSE
+        When user_mentions = NULL then FALSE
         else TRUE end                               as user_mentions
     ,case
         when urls LIKE '%video%' then 'video'
