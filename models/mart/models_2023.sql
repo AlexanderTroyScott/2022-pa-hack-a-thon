@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias = 'training_2023'
+        alias = 'models_2023'
     )
 }}
 with source as ( 
@@ -19,6 +19,5 @@ select screen_name              as screen_name
     ,target                     as target
 from 
 {{ ref('int_2023_data') }}
-    where source = 'Train'
 )
-select * from source
+select * from source where source = 'Train'
