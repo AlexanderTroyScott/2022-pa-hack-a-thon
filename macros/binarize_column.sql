@@ -16,11 +16,11 @@ unique_data AS (
 binned_data AS (
   SELECT
     {{ column }}
-    {% for row in REGEXP_SPLIT_TO_TABLE(trim(LOWER({{ column }})), ',') %}
+    {% for element in REGEXP_SPLIT_TO_TABLE(trim(LOWER(column)), ',') %}
       ,CASE
-        WHEN {{ row }} IS NOT NULL THEN 1
+        WHEN {{ element }} IS NOT NULL THEN 1
         ELSE 0
-      END AS {{ prefix }}_{{ row }}
+      END AS {{ prefix }}_{{ element }}
     {% endfor %}
   FROM split_data
 )
