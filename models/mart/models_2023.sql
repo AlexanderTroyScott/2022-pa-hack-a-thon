@@ -6,7 +6,7 @@
 }}
 with source as ( 
 select source                               as source
-    ,screen_name           TEXT NOT NULL    as screen_name
+    ,screen_name           TEXT    as screen_name NOT NULL 
     ,created_at                 as created_at
  --   ,full_text                  as full_text
     ,display_text_range      INT NOT NULL    as display_text_range
