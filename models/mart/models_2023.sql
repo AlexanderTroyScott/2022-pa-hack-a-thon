@@ -8,8 +8,8 @@ with source as (
 select source                                    as source
     ,screen_name                                 as screen_name 
  --   ,created_at                                  as created_at
-    ,year(cast(created_at as datetime))                            as created_year
-    ,month(cast(created_at as datetime))                           as created_month
+    ,year(cast(created_at as DATETIME))                            as created_year
+    ,month(cast(created_at as DATETIME))                           as created_month
     ,CASE 
         WHEN DATEPART(hour, your_datetime_column) >= 7 AND DATEPART(hour, your_datetime_column) <= 21 THEN 'TRUE' 
         ELSE 'FALSE' END                         AS created_time_between_7am_9pm
