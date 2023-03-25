@@ -1,5 +1,4 @@
 {% macro binarize_column(column, prefix) %}
-
 WITH hashtag_data AS (
   SELECT tweet_id, STRING_TO_ARRAY(hashtags, ',') AS hashtags
   FROM {{ ref('int_2023_data') }}
@@ -9,10 +8,5 @@ unique_hashtags AS (
   SELECT DISTINCT LOWER(UNNEST(hashtags)) AS hashtag
   FROM hashtag_data
 )
-SELECT 
-  tweet_id
-  {% for row in unique_hashtags %}
-    ,CASE WHEN LOWER(UNNEST(hashtags)) = '{{ row.hashtag }}' THEN 1 ELSE 0 END AS {{ row.hashtag }}
-  {% endfor %}
-FROM hashtag_data
+SELECT * FROM unique_hashtags
 {% endmacro %}
