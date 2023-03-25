@@ -15,5 +15,5 @@ SELECT
     CASE WHEN hashtag = '{{ element }}' THEN 1 ELSE 0 END AS {{ element }}
     {% if not loop.last %},{% endif %}
   {% endfor %}
-FROM split_data;
+FROM split_data
 {% endmacro %}
