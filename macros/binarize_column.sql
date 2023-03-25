@@ -5,6 +5,7 @@ WITH split_data AS (
     LOWER({{ column }}) AS {{ column }},
     REGEXP_SPLIT_TO_TABLE(LOWER({{ column }}), ',') AS split_column
   FROM {{ ref('int_2023_data') }}
+  where {{ column }} is not NULL
 ),
 
 unique_data AS (
