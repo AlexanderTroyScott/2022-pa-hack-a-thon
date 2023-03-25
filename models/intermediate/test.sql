@@ -1,8 +1,8 @@
 {{ config(materialized='table') }}
 
-WITH int_2023_data AS (
+WITH test AS (
   {{ binarize_column('hashtags', 'hashtag') }}
 )
 
 SELECT * 
-FROM int_2023_data
+FROM test
