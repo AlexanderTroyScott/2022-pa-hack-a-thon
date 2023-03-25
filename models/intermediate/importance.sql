@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias = 'int_2023_data'
+        alias = 'importance'
     )
 }}
 with source as (select * from {{ ref('int_2023_data') }})
