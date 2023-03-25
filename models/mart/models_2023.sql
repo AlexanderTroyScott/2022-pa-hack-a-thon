@@ -20,4 +20,4 @@ select screen_name              as screen_name
 from 
 {{ ref('int_2023_data') }}
 )
-select * from source where source = 'Train'
+select * from source
