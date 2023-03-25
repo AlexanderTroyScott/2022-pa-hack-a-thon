@@ -8,11 +8,12 @@ with source as (
 select source                                    as source
     ,screen_name                                 as screen_name 
  --   ,created_at                                  as created_at
-    ,year(cast(created_at as DATETIME))                            as created_year
-    ,month(cast(created_at as DATETIME))                           as created_month
+    ,extract( YEAR from created_at)                            as created_year
+    ,extract( YEAR from created_at)                           as created_month
     ,CASE 
-        WHEN DATEPART(hour, your_datetime_column) >= 7 AND DATEPART(hour, your_datetime_column) <= 21 THEN 'TRUE' 
-        ELSE 'FALSE' END                         AS created_time_between_7am_9pm
+        WHEN EXTRACT(HOUR FROM your_timestamp_column) 
+            BETWEEN 7 and 21 then TRUE
+        ELSE 'FALSE'                                END AS created_time_between_7am_9pm
     ,full_text                                   as full_text
     ,display_text_range                          as display_text_range
     ,case
