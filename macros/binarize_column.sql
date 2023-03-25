@@ -17,11 +17,10 @@ binned_data AS (
   SELECT
     {{ column }}
     {% for row in ['bitcoin'] %}
-      CASE
+      ,CASE
         WHEN {{ row }} IS NOT NULL THEN 1
         ELSE 0
       END AS {{ prefix }}_{{ row }}
-      {% if not loop.last %},{% endif %}
     {% endfor %}
   FROM split_data
 )
