@@ -16,7 +16,7 @@ unique_data AS (
 binned_data AS (
   SELECT
     {{ column }}
-    {% for row in unique_data %}
+    {% for row in ['bitcoin'] %}
       CASE
         WHEN {{ row }} IS NOT NULL THEN 1
         ELSE 0
