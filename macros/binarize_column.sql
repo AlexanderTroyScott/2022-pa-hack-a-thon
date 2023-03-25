@@ -16,7 +16,7 @@ unique_data AS (
 binned_data AS (
   SELECT
     {{ column }}
-    {% for row.split_column in unique_data %}
+    {% for row in unique_data %}
       CASE
         WHEN {{ row.split_column }} IS NOT NULL THEN 1
         ELSE 0
