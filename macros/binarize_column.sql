@@ -1,9 +1,10 @@
 {% macro binarize_column(column, prefix) %}
-
+with temp as
+(select REGEXP_SPLIT_TO_TABLE(column, ',')
 WITH split_data AS (
   SELECT
     LOWER({{ column }}) AS {{ column }},
-    {% for element in REGEXP_SPLIT_TO_TABLE(column, ',') %}
+    {% for element in unnest(REGEXP_SPLIT_TO_TABLE(trim(lower(hashtags)), ',')) %}
       ,CASE
         WHEN {{ element }} IS NOT NULL THEN 1
         ELSE 0
