@@ -1,7 +1,7 @@
 {% macro binarize_column(column, prefix) %}
 WITH split_data AS (
   SELECT *
-  {% for element in ["bank_transfer", "credit_card", "gift_card"] %}
+  {% for element in hashtags %}
       ,1 AS {{ prefix }}_{{ element }}
     {% endfor %}
   FROM (select tweet_id,  split_part({{column}}, ',', generate_series(1, array_length(string_to_array({{column}}, ','), 1))) as {{column}} from {{ ref('int_2023_data') }}) as subquery
