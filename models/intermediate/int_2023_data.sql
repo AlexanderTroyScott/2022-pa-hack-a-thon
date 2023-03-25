@@ -10,8 +10,8 @@ with source as (select * from {{ ref('stg_2023_advanced') }})
 select tweet_id as tweet_id
     ,screen_name                as screen_name
     ,created_at::timestamp AT TIME ZONE 'UTC' AT TIME ZONE 'America/Los_Angeles' as created_at
-    ,full_text                  as full_text
-    ,display_text_range         as display_text_range
+    ,full_text                                          as full_text
+    ,display_text_range                                 as display_text_range
     ,in_reply_to_screen_name    as in_reply_to_screen_name
     ,is_quote_status            as is_quote_status
     ,includes_media             as includes_media
@@ -25,7 +25,7 @@ select tweet_id as tweet_id
     END                                         as source
 ,engagement_count                               as target
 ,CASE
-    WHEN full_text LIKE '%🚀%' then 1
-    ELSE 0
+    WHEN full_text LIKE '%🚀%' then TRUE
+    ELSE FALSE
     END                                         as emoji_rocket
 from source as int_2023_data
