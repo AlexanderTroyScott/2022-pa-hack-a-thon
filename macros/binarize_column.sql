@@ -3,10 +3,11 @@
 
 WITH split_data AS (
   SELECT *
-  {% set column_values =  string_to_array(hashtags, ',') %}
-  {% for element in  column_values %}
+  {% for array in  hashtags %}
+    {% for element in array %}
       ,1 AS {{ prefix }}_{{ element }}
     {% endfor %}
+  {% endfor %}
   FROM (select tweet_id,  {{column}} from {{ ref('int_2023_data') }}) as subquery
   where {{ column }} is not NULL and tweet_id between 100001 and 100010
 )
