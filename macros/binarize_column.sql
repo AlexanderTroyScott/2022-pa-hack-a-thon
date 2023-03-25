@@ -3,7 +3,7 @@
 
 WITH split_data AS (
   SELECT *
-  {% for array in  unnest(hashtags) %}
+  {% for array in  array_agg(hashtags) %}
     {% for element in array %}
       ,1 AS {{ prefix }}_{{ element }}
     {% endfor %}
