@@ -13,19 +13,8 @@ unique_data AS (
   FROM split_data
 ),
 
-binned_data AS (
-  SELECT
-    {{ column }}
-    {% for row in unique_data %}
-      ,CASE
-        WHEN {{ row.split_column }} IS NOT NULL THEN 1
-        ELSE 0
-      END AS test_{{ row.split_column }}
-    {% endfor %}
-  FROM split_data
-)
 
-SELECT * from binned_data
+SELECT * from unique_data
 
 
 {% endmacro %}
