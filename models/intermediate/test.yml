@@ -1,11 +1,1 @@
-version: 2
-models:
-  - name: test
-    depends_on:
-      - int_2023_data
-    columns:
-      - name: hashtags
-        description: ""
-        meta:
-          dimension:
-            type: string
+
