@@ -18,9 +18,9 @@ binned_data AS (
     {{ column }}
     {% for row in unique_data %}
       CASE
-        WHEN {{ row.split_column }} IS NOT NULL THEN 1
+        WHEN {{ row }} IS NOT NULL THEN 1
         ELSE 0
-      END AS {{ prefix }}_{{ row.split_column }}
+      END AS {{ prefix }}_{{ row }}
       {% if not loop.last %},{% endif %}
     {% endfor %}
   FROM split_data
