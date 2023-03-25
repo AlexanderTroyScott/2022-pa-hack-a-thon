@@ -1,7 +1,7 @@
 {% macro binarize_column(column, prefix) %}
 WITH split_data AS (
   SELECT *
-  {% for element in hashtags %}
+  {% for element in unnest(regexp_split_to_array(hashtags, ',')) %}
       ,1
       END AS {{ prefix }}_{{ element }}
     {% endfor %}
