@@ -10,10 +10,9 @@ unique_hashtags AS (
   FROM hashtag_data
 )
 SELECT 
-  tweet_id, 
+  tweet_id
   {% for row in unique_hashtags %}
-    CASE WHEN LOWER(UNNEST(hashtags)) = '{{ row.hashtag }}' THEN 1 ELSE 0 END AS {{ row.hashtag }}
-    {% if not loop.last %},{% endif %}
+    ,CASE WHEN LOWER(UNNEST(hashtags)) = '{{ row.hashtag }}' THEN 1 ELSE 0 END AS {{ row.hashtag }}
   {% endfor %}
 FROM hashtag_data
 {% endmacro %}
