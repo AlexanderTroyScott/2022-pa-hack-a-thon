@@ -5,15 +5,15 @@ WITH hashtag_data AS (
   FROM {{ ref('int_2023_data') }}
   WHERE {{ column }} IS NOT NULL AND tweet_id BETWEEN 100001 AND 100010
 ),
-split_data AS (
-  SELECT tweet_id, LOWER(UNNEST(hashtags)) AS hashtag
+unique_hashtags AS (
+  SELECT DISTINCT LOWER(UNNEST(hashtags)) AS hashtag
   FROM hashtag_data
 )
 SELECT 
   tweet_id, 
-  {% for element in ["category_a", "category_b", "category_c"] %}
-    CASE WHEN hashtag = '{{ element }}' THEN 1 ELSE 0 END AS {{ element }}
+  {% for row in unique_hashtags %}
+    CASE WHEN LOWER(UNNEST(hashtags)) = '{{ row.hashtag }}' THEN 1 ELSE 0 END AS {{ row.hashtag }}
     {% if not loop.last %},{% endif %}
   {% endfor %}
-FROM split_data
+FROM hashtag_data;
 {% endmacro %}
