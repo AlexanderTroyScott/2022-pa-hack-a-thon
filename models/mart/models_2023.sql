@@ -5,7 +5,8 @@
     )
 }}
 with source as ( 
-select screen_name              as screen_name
+select source                   as source
+    ,screen_name              as screen_name
     ,created_at                 as created_at
  --   ,full_text                  as full_text
     ,display_text_range         as display_text_range
