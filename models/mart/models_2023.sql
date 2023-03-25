@@ -23,7 +23,10 @@ select source                                    as source
     ,is_quote_status                             as is_quote_status
   --  ,includes_media                             as includes_media
     ,hashtags                                    as hashtags
-    ,coalesce(user_mentions,'NONE')              as user_mentions
+    --,user_mentions                                as user_mentions
+    ,Case 
+        When user_mentions = FALSE then FALSE
+        else TRUE end                               as user_mentions
     ,case
         when urls LIKE '%video%' then 'video'
         when urls LIKE '%photo%' then 'photo'
