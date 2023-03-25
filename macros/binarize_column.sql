@@ -11,7 +11,7 @@ WITH split_data AS (
 unique_data AS (
   SELECT DISTINCT split_column
   FROM split_data
-),
+)
 
 
 SELECT * from unique_data
