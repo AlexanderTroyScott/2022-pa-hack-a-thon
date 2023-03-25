@@ -1,6 +1,4 @@
 {% macro binarize_column(column, prefix) %}
-with temp as
-(select REGEXP_SPLIT_TO_TABLE(column, ',')
 WITH split_data AS (
   SELECT
     LOWER({{ column }}) AS {{ column }},
