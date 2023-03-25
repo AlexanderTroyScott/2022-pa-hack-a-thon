@@ -8,16 +8,16 @@ with source as (
 select source                               as source
     ,screen_name               as screen_name 
     ,created_at                 as created_at
- --   ,full_text                  as full_text
+   ,full_text                  as full_text
     ,display_text_range         as display_text_range
     ,in_reply_to_screen_name    as in_reply_to_screen_name
     ,is_quote_status          as is_quote_status
     ,includes_media           as includes_media
-  --  ,hashtags                   as hashtags
+   ,hashtags                   as hashtags
     ,coalesce(user_mentions,'NONE')          as user_mentions
- --   ,urls                       as urls
+    ,urls                       as urls
     ,emoji_rocket          as emoji_rocket
-    ,coalesce(target,0)                as target
+    ,coalesce(log(target),0)                as target
 from 
 {{ ref('int_2023_data') }}
 )
