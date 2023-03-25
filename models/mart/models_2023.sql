@@ -17,7 +17,9 @@ select source                               as source
     ,coalesce(user_mentions,'NONE')          as user_mentions
     ,urls                       as urls
     ,emoji_rocket          as emoji_rocket
-    ,coalesce(log(target),0)                as target
+    ,Case
+        when Target is Null or target = 0 then 0
+    else log(target) end            as target
 from 
 {{ ref('int_2023_data') }}
 )
