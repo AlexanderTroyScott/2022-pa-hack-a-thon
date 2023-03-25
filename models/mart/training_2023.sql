@@ -12,7 +12,7 @@ select screen_name              as screen_name
     ,in_reply_to_screen_name    as in_reply_to_screen_name
     ,is_quote_status            as is_quote_status
     ,includes_media             as includes_media
-    ,hashtags                   as hashtags
+  --  ,hashtags                   as hashtags
     ,user_mentions              as user_mentions
  --   ,urls                       as urls
     ,emoji_rocket               as emoji_rocket
