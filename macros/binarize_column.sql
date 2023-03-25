@@ -8,5 +8,12 @@ unique_hashtags AS (
   SELECT DISTINCT LOWER(UNNEST(hashtags)) AS hashtag
   FROM hashtag_data
 )
-SELECT * FROM unique_hashtags
+SELECT
+  tweet_id,
+  {% for hashtag in unique_hashtags %}
+    CASE WHEN '{{ hashtag.hashtag }}' = ANY(hashtags) THEN 1 ELSE 0 END AS {{ hashtag.hashtag }}
+    {% if not loop.last %},{% endif %}
+  {% endfor %}
+FROM hashtag_data
+
 {% endmacro %}
