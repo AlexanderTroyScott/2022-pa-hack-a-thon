@@ -9,9 +9,9 @@ actuaryllc:
     database:
       type: postgres
       host: 192.168.190.81
-      user: username
-      password: password
+      user: ${PGUSER}
+      password: ${PGPASSWORD}
       port: 5432
-      dbname: username
+      dbname: LLC
       schema: hackathons
       sslmode: disable
