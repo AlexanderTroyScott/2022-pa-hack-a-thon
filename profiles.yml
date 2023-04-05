@@ -8,7 +8,7 @@ actuaryllc:
   outputs:
     database:
       type: postgres
-      host: 192.168.190.81
+      host: analytics.lan
       user: ${PGUSER}
       password: ${PGPASSWORD}
       port: 5432
