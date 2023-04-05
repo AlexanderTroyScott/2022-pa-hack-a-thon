@@ -9,7 +9,7 @@ actuaryllc:
     database:
       type: postgres
       host: analytics.lan
-      user: ${PGUSER}
+      user: "{{ var('pg_user') }}"
       password: ${PGPASSWORD}
       port: 5432
       dbname: LLC
