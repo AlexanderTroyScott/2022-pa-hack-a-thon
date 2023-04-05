@@ -1,6 +1,6 @@
 {% macro binarize_column(table_name, column, prefix, start_id, end_id) %}
 
-{% set table_name = table_name | ref %}
+--{% set table_name = table_name | ref %}
 
 WITH hashtag_data AS (
   SELECT tweet_id, STRING_TO_ARRAY({{ column }}, ',') AS hashtags
