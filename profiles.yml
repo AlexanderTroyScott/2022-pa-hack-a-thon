@@ -3,13 +3,16 @@ config:
   send_anonymous_usage_stats: false
     #skip_profile_setup: true
 
+vars:
+  pg_user: ${env_var('PGUSER')}
+
 actuaryllc:
   target: database
   outputs:
     database:
       type: postgres
       host: analytics.lan
-      user: ${PGUSER}
+      user: "{{ var('pg_user') }}"
       password: ${PGPASSWORD}
       port: 5432
       dbname: LLC
