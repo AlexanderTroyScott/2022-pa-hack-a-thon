@@ -10,7 +10,7 @@ actuaryllc:
       type: postgres
       host: analytics.lan
       user: ${env_var('PGUSER')}
-      password: ${PGPASSWORD}
+      password: ${env_var('PGPASSWORD')}
       port: 5432
       dbname: LLC
       schema: hackathons
