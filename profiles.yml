@@ -8,8 +8,8 @@ actuaryllc:
   outputs:
     database:
       type: postgres
-      host: analytics.lan
-      user: "{{ var('PGUSER') }}"
+      host: database.actuary.llc
+      user: actuary
       password: ${PGPASSWORD}
       port: 5432
       dbname: LLC
