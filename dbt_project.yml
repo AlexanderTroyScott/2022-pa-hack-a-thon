@@ -15,5 +15,5 @@ models:
     staging:
       +materialized: table
 seeds:
-  database: username
+  database: LLC
   #schema: hackathons <--- this adds a suffix to the schema
