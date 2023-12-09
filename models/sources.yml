@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: raw_data
     schema: hackathons
-    database: username
+    database: LLC
     tables:
       - name: 2022_advanced_train
       - name: 2022_advanced_test
