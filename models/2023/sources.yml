@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: hackathons  # Name of the source group
+    database: hackathons  # Replace with your actual database name
+    schema: "2023"
+    tables:
+      - name: 2023_expert_training  # Repeat for each seed file
+        identifier: 2023_expert_training  # This should match the actual table name in the database
+      - name: 2023_expert_testing  # Repeat for each seed file
+        identifier: 2023_expert_testing
+     # - name: 2023_expert_samplesubmission # Repeat for each seed file
+     #   identifier: submission

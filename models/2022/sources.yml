@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: seed_source
+    database: hackathons
+    schema: seed_data
+    tables:
+      - name: 2022_advanced_train
+      - name: 2022_advanced_test

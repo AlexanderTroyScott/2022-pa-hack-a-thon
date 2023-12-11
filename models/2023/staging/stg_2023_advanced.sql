@@ -5,5 +5,6 @@
     )
 }}
 {{ dbt_utils.union_relations(
-    relations=[source('raw_data', '2023_expert_training'), source('raw_data', '2023_expert_testing')]
+   
+    relations=[source('hackathons', '2023_expert_training'), source('hackathons', '2023_expert_testing')]
 ) }}

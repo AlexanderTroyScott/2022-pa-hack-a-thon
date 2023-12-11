@@ -1,19 +1,29 @@
-name: actuaryllc
+name: hackathons
 version: 1.0.0
 config-version: 2
 profile: actuaryllc
+name: hackathons
 
 vars:
   PGUSER: actuary
+vars:
+  year_to_run: "{{ env_var('DBT_HACKATHON_YEAR', '2023') }}"  # default to 2022 if not set
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
+
 models:
-  actuaryllc:
-    staging:
-      +materialized: table
+  hackathons:
+    "2022":
+      enabled: "{{ env_var('DBT_HACKATHON_YEAR') == '2022' }}"
+    "2023":
+      enabled: "{{ env_var('DBT_HACKATHON_YEAR') == '2023' }}"
+
 seeds:
-  database: LLC
-  #schema: hackathons <--- this adds a suffix to the schema
+  hackathons:
+    "2022":
+      +enabled: "{{ env_var('DBT_HACKATHON_YEAR') == '2022' }}"
+    "2023":
+      +enabled: "{{ env_var('DBT_HACKATHON_YEAR') == '2023' }}"
