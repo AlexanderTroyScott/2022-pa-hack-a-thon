@@ -1,0 +1,43 @@
+name: 'Redeploy'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lightdash/lightdash.yaml'
+  
+jobs:
+  checkout-repository:
+    runs-on: [actuary]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 'Actuary-LLC/lightdash'
+          ref: 'main'       
+  redeploy-service:
+    needs: checkout-repository
+    runs-on: [self-hosted]
+    env:
+      #LIGHTDASH_PROJECT_0_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PAT_READ_REPOS }}
+      LIGHTDASH_SECRET: ${{ secrets.LIGHTDASH_SECRET }}
+      #PGHOST: ${{ vars.POSTGRES_HOST }}
+      PGUSER: ${{ vars.POSTGRES_USER }}
+      PGPORT: ${{ vars.POSTGRES_PORT }}
+      PGDATABASE: ${{ vars.POSTGRES_DATABASE }}
+      PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      GOOGLE_OAUTH_ID: ${{ vars.GOOGLE_OAUTH_ID }}
+      AUTH_GOOGLE_OAUTH2_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_SECRET }}
+    steps:
+      - name: Remove and redeploy services
+        run: |
+          SERVICES=("analytics_lightdash") 
+          for SERVICE_NAME in "${SERVICES[@]}"; do
+            if docker service ls | grep -q $SERVICE_NAME; then
+              docker service rm $SERVICE_NAME;
+              echo "Service $SERVICE_NAME removed."
+            else echo "Service $SERVICE_NAME is not running."
+            fi
+          done
+      - run: docker stack deploy -c lightdash.yaml analytics
