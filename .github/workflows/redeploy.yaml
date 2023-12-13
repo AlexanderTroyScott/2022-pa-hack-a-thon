@@ -43,7 +43,7 @@ jobs:
       - name: debug1
         run: ls postgres/ -la
       - name: debug
-        run: ls "postgres/docker-entrypoints-initdb.d"  -la
+        run: ls "postgres/docker-entrypoints-initdb.d/"  -la
       - name: Deploy postgres
         run: |
           chmod -R 777 postgres/docker-entrypoints-initdb.d/
