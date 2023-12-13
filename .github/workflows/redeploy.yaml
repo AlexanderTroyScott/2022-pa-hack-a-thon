@@ -19,7 +19,7 @@ jobs:
           repository: 'AlexanderTroyScott/hackathon-predictive-analytics'
           ref: 'main'
   postgres:
-    if: "contains(github.event.push.commits[*].added, 'postgres/**') || contains(github.event.push.commits[*].modified, 'postgres/**')"
+    if: "github.event_name == 'workflow_dispatch' || (contains(github.event.push.commits[*].added, 'postgres/**') || contains(github.event.push.commits[*].modified, 'postgres/**'))"
     runs-on: [actuary]
     env:
       PGHOST: ${{ vars.POSTGRES_HOST }}
@@ -44,7 +44,7 @@ jobs:
           chmod -R 777 docker-entrypoints-initdb.d 
           docker stack deploy -c postgres.yaml analytics
   lightdash:
-    if: "contains(github.event.push.commits[*].added, 'lightdash/**') || contains(github.event.push.commits[*].modified, 'lightdash/**')"
+    if: "github.event_name == 'workflow_dispatch' || (contains(github.event.push.commits[*].added, 'lightdash/**') || contains(github.event.push.commits[*].modified, 'lightdash/**'))"
     runs-on: [actuary]
     env:
       LIGHTDASH_PROJECT_0_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PAT_READ_REPOS }}
