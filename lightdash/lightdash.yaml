@@ -33,9 +33,9 @@ services:
       #LIGHTDASH_PROJECT_0_PROJECT_SUB_PATH: /
       #LIGHTDASH_PROJECT_0_PROFILES_SUB_PATH: /
       #POSTGRES configurations
-      PGHOST: 192.168.190.89
+      PGHOST: ${PGHOST}
       PGUSER: ${PGUSER}
-      PGPORT: 5432
+      PGPORT: ${PGPORT}
       PGPASSWORD: ${PGPASSWORD}
       PGDATABASE: ${PGDATABASE}
     deploy:
