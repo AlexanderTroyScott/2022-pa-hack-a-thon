@@ -40,8 +40,9 @@ jobs:
             fi
           done
       - name: Deploy postgres
-      - run: chmod -R 777 docker-entrypoints-initdb.d 
-      - run: docker stack deploy -c postgres.yaml analytics
+        run: |
+          chmod -R 777 docker-entrypoints-initdb.d 
+          docker stack deploy -c postgres.yaml analytics
   lightdash:
     if: "contains(github.event.push.commits[*].added, 'lightdash/**') || contains(github.event.push.commits[*].modified, 'lightdash/**')"
     runs-on: [actuary]
@@ -67,4 +68,4 @@ jobs:
             fi
           done
       - name: Deploy lightdash
-      - run: docker stack deploy -c lightdash.yaml analytics
+        run: docker stack deploy -c lightdash.yaml analytics
