@@ -39,6 +39,10 @@ jobs:
             else echo "Service $SERVICE_NAME is not running."
             fi
           done
+      - name: debug
+        run: |
+          ls -la
+          pwd
       - name: Deploy postgres
         run: |
           chmod -R 777 postgres/docker-entrypoints-initdb.d 
