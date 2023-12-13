@@ -19,6 +19,7 @@ jobs:
           repository: 'AlexanderTroyScott/hackathon-predictive-analytics'
           ref: 'main'
   postgres:
+    needs: checkout
     if: "github.event_name == 'workflow_dispatch' || (contains(github.event.push.commits[*].added, 'postgres/**') || contains(github.event.push.commits[*].modified, 'postgres/**'))"
     runs-on: [actuary]
     env:
@@ -48,6 +49,7 @@ jobs:
           chmod -R 777 postgres/docker-entrypoints-initdb.d/
           docker stack deploy -c postgres/postgres.yaml analytics
   lightdash:
+    needs: checkout
     if: "github.event_name == 'workflow_dispatch' || (contains(github.event.push.commits[*].added, 'lightdash/**') || contains(github.event.push.commits[*].modified, 'lightdash/**'))"
     runs-on: [actuary]
     env:
