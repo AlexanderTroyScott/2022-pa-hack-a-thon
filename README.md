@@ -1,18 +1,26 @@
 # Predictive Analytics Hack-a-thons
 
-This repository contains work/models utilized in the joint actuarial hackathons for years 2022+.
+This repository contains work/models utilized in the joint actuarial hackathons for years 2022+
 
-It is composed of three separate pieces
-1. Postgres
-   - Source data from the hackathon is loaded into a postgres database. Any additional outside sources would also be stored there.
-2. DBT
-   - This is the SQL transformation layer to clean/validate/connect data sources and generate data for models
-3. Lightdash
-   - Visualize and explore data summarized in the DBT layer
-4. Jupyter
-   - This will contain the models used to make predictions
-  
+Two folders contain files:
+- Kaggle - Folder containing the downloaded source files without any modification
+- Jupyter - Folder containing the code that was run on a jupyter server for modeling
+
+Three folders are for docker services
+- Postgres - Runs a postgres database service for the source data and dbt runs and accessed through adminer
+- dbt - SQL transformation layer to clean and transform the data for modeling
+- Lightdash - Dashboard that connects to the postgres database and dbt for model exploration and validation
+
 ## Postgres
+Environment variables:
+
+
+Run the Service
+> docker stack deploy -c postgres/postgres.yaml analytics_db
+
+Login to database by connecting to the host IP in a web browser
+
+Load source data to the database.
 
 ## DBT
 
