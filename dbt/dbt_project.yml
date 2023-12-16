@@ -15,13 +15,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   hackathons:
     "2022":
-      enabled: "{{ env_var('year_to_run') == '2022' }}"
+      enabled: "{{ var('year_to_run') == '2022' }}"
     "2023":
-      enabled: "{{ env_var('year_to_run') == '2023' }}"
+      enabled: "{{ var('year_to_run') == '2023' }}"
 
 seeds:
   hackathons:
     "2022":
-      +enabled: "{{ env_var('year_to_run') == '2022' }}"
+      +enabled: "{{ var('year_to_run') == '2022' }}"
     "2023":
-      +enabled: "{{ env_var('year_to_run') == '2023' }}"
+      +enabled: "{{ var('year_to_run') == '2023' }}"
