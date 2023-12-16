@@ -1,0 +1,49 @@
+version: '3'
+
+networks:
+  database-network:
+    driver: overlay
+
+services:
+  lightdash:
+    hostname: lightdash
+    image: lightdash/lightdash:0.899.1
+    networks:
+     - database-network
+    ports:
+     - 800:8080
+    environment:
+      #Lightdash Requirements
+      LIGHTDASH_SECRET: ${LIGHTDASH_SECRET}
+      #Lightdash configs
+      SITE_URL: https://dashboard.actuary.llc
+      #Lightdash options
+      LIGHTDASH_LOG_LEVEL: debug
+      SECURE_COOKIES: "true"
+      TRUST_PROXY: "true"
+      #Use Google OAUTH
+      #AUTH_DISABLE_PASSWORD_AUTHENTICATION: "true"
+      #AUTH_GOOGLE_OAUTH2_CLIENT_ID: ${GOOGLE_OAUTH_ID}
+      #AUTH_GOOGLE_OAUTH2_CLIENT_SECRET: ${GOOGLE_OAUTH_SECRET}
+      #Add Github Repository Information
+      #LIGHTDASH_PROJECT_0_NAME: my_github_repo
+      #LIGHTDASH_PROJECT_0_REPOSITORY: AlexanderTroyScott/hackathon-predictive-analytics
+      #LIGHTDASH_PROJECT_0_PERSONAL_ACCESS_TOKEN: ${GH_PAT_READ_REPOS}
+      #LIGHTDASH_PROJECT_0_BRANCH: main
+      #LIGHTDASH_PROJECT_0_PROJECT_SUB_PATH: /
+      #LIGHTDASH_PROJECT_0_PROFILES_SUB_PATH: /
+      #POSTGRES configurations
+      PGHOST: ${PGHOST}
+      PGUSER: ${PGUSER}
+      PGPORT: ${PGPORT}
+      PGPASSWORD: ${PGPASSWORD}
+      PGDATABASE: ${PGDATABASE}
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
