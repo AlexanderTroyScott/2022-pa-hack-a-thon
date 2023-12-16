@@ -2,11 +2,9 @@ name: hackathons
 version: 1.0.0
 config-version: 2
 profile: actuaryllc
-name: hackathons
 
 vars:
   PGUSER: actuary
-vars:
   year_to_run: "2023"  # default to 2022 if not set
 
 target-path: "target"  # directory which will store compiled SQL files
