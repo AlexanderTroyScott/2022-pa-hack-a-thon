@@ -62,6 +62,7 @@ jobs:
       PGDATABASE: ${{ vars.POSTGRES_DATABASE }}
       PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       GOOGLE_OAUTH_ID: ${{ vars.GOOGLE_OAUTH_ID }}
+      AUTH_GOOGLE_OAUTH2_CLIENT_ID: ${{ vars.GOOGLE_OAUTH_ID }}
       AUTH_GOOGLE_OAUTH2_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_SECRET }}
     steps:
       - name: Remove lightdash service
