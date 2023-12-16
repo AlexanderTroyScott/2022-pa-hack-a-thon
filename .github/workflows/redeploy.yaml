@@ -47,6 +47,7 @@ jobs:
         #chmod -R 777 postgres/docker-entrypoints-initdb.d/
       - name: Deploy postgres
         run: |
+          chmod -R 777 postgres/docker-entrypoints-initdb.d/
           docker stack deploy -c postgres/postgres.yaml analytics
   lightdash:
     needs: checkout
