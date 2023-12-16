@@ -23,6 +23,7 @@ services:
       TRUST_PROXY: "true"
       #Use Google OAUTH
       AUTH_DISABLE_PASSWORD_AUTHENTICATION: "true"
+      AUTH_GOOGLE_ENABLED: "true"
       AUTH_GOOGLE_OAUTH2_CLIENT_ID: ${GOOGLE_OAUTH_ID}
       AUTH_GOOGLE_OAUTH2_CLIENT_SECRET: ${GOOGLE_OAUTH_SECRET}
       #Add Github Repository Information
